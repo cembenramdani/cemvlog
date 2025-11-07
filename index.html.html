@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu avec navigation interne</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth; /* effet de défilement doux */
+    }
+
+    /* Barre de navigation */
+    .navbar {
+      display: flex;
+      align-items: center;
+      background: #333;
+      padding: 10px 20px;
+      color: white;
+      position: fixed; /* reste en haut même quand on défile */
+      top: 0;
+      width: 100%;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .search-box input {
+      padding: 5px;
+      border: none;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .search-box button {
+      padding: 6px 10px;
+      border: none;
+      background: #ff6600;
+      color: white;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+    }
+
+    /* Sections de la page */
+    section {
+      height: 100vh; /* plein écran */
+      padding: 100px 20px; /* pour éviter que le texte soit caché sous la navbar */
+	  
+    }
+
+    #accueil { background: #F9FAFB; color: #374151; }
+#services { background: #E5E7EB; color: #374151; }
+#contact { background: #F9FAFB; color: #374151; }
+  </style>
+</head>
+<body>
+<button onclick="allerServices()">Voir Services</button>
+
+<section id="services" style="margin-top:800px;">Section Services</section>
+
+<script>
+function allerServices() {
+  document.getElementById("services").scrollIntoView({
+    behavior: "smooth", // fluide
+    block: "start"      // aligner en haut de la fenêtre
+  });
+}
+</script>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Rechercher...">
+      <button onclick="rechercher()">??</button>
+    </div>
+  </nav>
+
+  <section id="accueil">
+    <h1>Bienvenue sur la page d'accueil</h1>
+    <p>Ceci est la section Accueil.</p>
+  </section>
+
+  <section id="services">
+    <h1>Nos Services</h1>
+    <p>Voici la section Services.</p>
+  </section>
+
+  <section id="contact">
+    <h1>Contactez-nous</h1>
+    <p>Ceci est la section Contact.</p>
+  </section>
+
+  <script>
+    function rechercher() {
+      let query = document.getElementById("search").value;
+      alert("Vous avez recherché : " + query);
+    }
+  </script>
+</body>
+</html>
