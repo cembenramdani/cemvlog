@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie d'Images</title>
+    <!-- Lier le fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Inclure jQuery depuis un CDN (Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+	
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menu avec navigation interne</title>
@@ -101,6 +112,27 @@ function allerServices() {
   <section id="accueil">
     <h1>Bienvenue sur la page d'accueil</h1>
     <p>Ceci est la section Accueil.</p>
+<div class="gallery-container">
+        <!-- Item 1 -->
+        <div class="gallery-item">
+            <a href="image1_large.jpg" data-title="Description Image 1">
+                <img src="image1_petite.jpg" alt="Image 1">
+            </a>
+            <div class="desc">Image 1</div>
+        </div>
+        <!-- Item 2 -->
+        <div class="gallery-item">
+            <a href="image2_large.jpg" data-title="Description Image 2">
+                <img src="image2_petite.jpg" alt="Image 2">
+            </a>
+            <div class="desc">Image 2</div>
+        </div>
+        <!-- Ajoutez plus d'images ici -->
+    </div>
+
+    <!-- Lier le fichier JavaScript (pour jQuery) -->
+    <script src="script.js"></script>
+	  
   </section>
 
   <section id="journal">
@@ -127,6 +159,7 @@ function allerServices() {
 </body>
 
 </html>
+
 
 
 
