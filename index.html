@@ -291,18 +291,47 @@
     <div class="accueil-slider-col">
       <h1>Bienvenue à l'école Benramdani Sadia Tadmait</h1>
       <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-        <div class="slider">
-        <div class="slides">
-          <img src="image/fff.jpg" alt="Image 1">
-          <img src="image/hhh.jpg" alt="Image 2">
-          <img src="image/yyy.jpg" alt="Image 3">
-        </div>
-        <div class="nav">
-          <button id="prev">❮</button>
-          <button id="next">❯</button>
-        </div>
-      </div>
-    </div>
+       <!-- Slider -->
+<div class="slider">
+  <div class="slides">
+    <img src="image/fff.jpg" alt="Image 1">
+    <img src="image/hhh.jpg" alt="Image 2">
+    <img src="image/yyy.jpg" alt="Image 3">
+  </div>
+  <div class="nav">
+    <button id="prev">❮</button>
+    <button id="next">❯</button>
+  </div>
+</div>
+
+<!-- Script du slider -->
+<script>
+  const slides = document.querySelector('.slides');
+  const images = document.querySelectorAll('.slides img');
+  const total = images.length;
+  let index = 0;
+
+  function updateSlide() {
+    slides.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  // Flèches
+  document.getElementById('next').addEventListener('click', () => {
+    index = (index + 1) % total;
+    updateSlide();
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+    index = (index - 1 + total) % total;
+    updateSlide();
+  });
+
+  // Défilement automatique
+  setInterval(() => {
+    index = (index + 1) % total;
+    updateSlide();
+  }, 4000); // toutes les 4 secondes
+</script>
    
   </section>
 
@@ -322,15 +351,8 @@
     <p>Ceci est la section activités scolaires.</p>
   </section>
 
-  <!-- Script du slider -->
-  <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const total = images.length;
-    let index = 0;
+ 
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${index
 
 
 
