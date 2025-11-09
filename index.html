@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slider centré et menu déroulant</title>
+<title>Site avec slider et menu déroulant</title>
 
 <style>
   body {
@@ -53,7 +53,7 @@
     color: #ff6600;
   }
 
-  /* --- Sous-menus cachés par défaut --- */
+  /* --- Sous-menus --- */
   .navbar ul li ul {
     display: none;
     position: absolute;
@@ -84,48 +84,70 @@
 
   /* --- Section accueil --- */
   #accueil {
-    height: 100vh;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding-top: 70px;
+    justify-content: center;
     background: #F9FAFB;
+    min-height: 100vh;
   }
 
   #accueil h1 {
-    margin-bottom: 5px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
   #accueil p {
-    margin-top: 0;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
     color: #555;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 20px;
   }
 
-  /* --- Slider centré et images pleine largeur --- */
+  /* Boutons Accueil */
+  .accueil-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 5px;
+    transition: background 0.3s;
+  }
+  .accueil-buttons button:nth-child(1) { background:#ff6600; color:white; }
+  .accueil-buttons button:nth-child(1):hover { background:#e65c00; }
+  .accueil-buttons button:nth-child(2) { background:#333; color:white; }
+  .accueil-buttons button:nth-child(2):hover { background:#555; }
+
+  /* --- Slider --- */
   .slider {
-    width: 60%;
-    max-width: 400px;
-    height: 200px;
+    width: 80%;
+    max-width: 700px;
+    height: 350px;
+    margin-bottom: 50px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
   }
 
   .slides {
     display: flex;
     width: 100%;
+    height: 100%;
     transition: transform 0.5s ease;
   }
 
   .slides img {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px;
     flex-shrink: 0;
+    border-radius: 15px;
   }
 
   .nav {
@@ -141,15 +163,35 @@
     background-color: rgba(0,0,0,0.5);
     border: none;
     color: white;
-    padding: 8px 12px;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 18px;
     transition: background-color 0.3s;
   }
 
   .nav button:hover {
     background-color: rgba(0,0,0,0.8);
+  }
+
+  /* Cartes Accueil */
+  .accueil-cards {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .accueil-cards .card {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    min-width:220px;
+    text-align:center;
+  }
+  .accueil-cards .card h3 {
+    margin-bottom:10px;
   }
 
   /* --- Autres sections --- */
@@ -158,10 +200,10 @@
     padding: 120px 20px 80px;
     min-height: 100vh;
   }
+  #journal { background:#E5E7EB; }
+  #propos { background:#F3F4F6; }
+  #activite { background:#E5E7EB; }
 
-  #journal { background: #E5E7EB; }
-  #propos { background: #F3F4F6; }
-  #activite { background: #E5E7EB; }
 </style>
 </head>
 <body>
@@ -196,54 +238,45 @@
     </ul>
   </nav>
 
-  <!-- Section accueil -->
- <section id="accueil">
-  <!-- Texte d'introduction -->
-  <h1>Bienvenue à l'école XYZ</h1>
-  <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
+  <!-- Section Accueil -->
+  <section id="accueil">
+    <h1>Bienvenue à l'école XYZ</h1>
+    <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
 
-  <!-- Boutons d'action -->
-  <div class="accueil-buttons" style="margin-bottom:20px;">
-    <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})" 
-            style="padding:10px 20px;margin-right:10px;border:none;background:#ff6600;color:white;border-radius:5px;cursor:pointer;">
-      Découvrir les activités
-    </button>
-    <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})"
-            style="padding:10px 20px;border:none;background:#333;color:white;border-radius:5px;cursor:pointer;">
-      Voir le journal
-    </button>
-  </div>
+    <div class="accueil-buttons">
+      <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+      <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
+    </div>
 
-  <!-- Slider centré -->
-  <div class="slider" id="accueil-slider" style="margin-bottom:30px;">
-    <div class="slides">
-      <img src="image/fff.jpg" alt="Image 1">
-      <img src="image/fff.jpg" alt="Image 2">
-      <img src="image/fff.jpg" alt="Image 3">
+    <div class="slider" id="accueil-slider">
+      <div class="slides">
+        <img src="image/fff.jpg" alt="Image 1">
+        <img src="image/fff.jpg" alt="Image 2">
+        <img src="image/fff.jpg" alt="Image 3">
+      </div>
+      <div class="nav">
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
+      </div>
     </div>
-    <div class="nav">
-      <button id="prev">❮</button>
-      <button id="next">❯</button>
-    </div>
-  </div>
 
-  <!-- Cartes d'information -->
-  <div class="accueil-cards" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
-      <h3>Nos valeurs</h3>
-      <p>Respect – Partage – Excellence</p>
+    <div class="accueil-cards">
+      <div class="card">
+        <h3>Nos valeurs</h3>
+        <p>Respect – Partage – Excellence</p>
+      </div>
+      <div class="card">
+        <h3>Notre mission</h3>
+        <p>Accompagner chaque élève vers la réussite.</p>
+      </div>
+      <div class="card">
+        <h3>Événements récents</h3>
+        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+      </div>
     </div>
-    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
-      <h3>Notre mission</h3>
-      <p>Accompagner chaque élève vers la réussite.</p>
-    </div>
-    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
-      <h3>Événements récents</h3>
-      <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Autres sections -->
   <section id="journal">
     <h1>Journal de l'école</h1>
     <p>Voici la section du journal de l'école.</p>
@@ -287,4 +320,3 @@
   </script>
 </body>
 </html>
-
