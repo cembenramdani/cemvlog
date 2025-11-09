@@ -1,4 +1,203 @@
-<section id="accueil" style="padding-top:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#F9FAFB; min-height:100vh;">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slider centré et menu déroulant</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: #F9FAFB;
+  }
+
+  /* --- Barre de navigation --- */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar ul li {
+    position: relative;
+  }
+
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    display: block;
+  }
+
+  .navbar ul li a:hover {
+    color: #ff6600;
+  }
+
+  /* --- Sous-menus cachés par défaut --- */
+  .navbar ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    min-width: 180px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .navbar ul li ul li a {
+    padding: 10px 15px;
+    font-weight: normal;
+  }
+
+  .navbar ul li:hover ul {
+    display: block;
+  }
+
+  .navbar ul li ul li a:hover {
+    background-color: #444;
+    color: #ff6600;
+  }
+
+  /* --- Section accueil --- */
+  #accueil {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
+    background: #F9FAFB;
+  }
+
+  #accueil h1 {
+    margin-bottom: 5px;
+  }
+
+  #accueil p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  /* --- Slider centré et images pleine largeur --- */
+  .slider {
+    width: 60%;
+    max-width: 400px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
+
+  .slides {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .slides img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    flex-shrink: 0;
+  }
+
+  .nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+
+  .nav button {
+    background-color: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  .nav button:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  /* --- Autres sections --- */
+  section {
+    text-align: center;
+    padding: 120px 20px 80px;
+    min-height: 100vh;
+  }
+
+  #journal { background: #E5E7EB; }
+  #propos { background: #F3F4F6; }
+  #activite { background: #E5E7EB; }
+</style>
+</head>
+<body>
+
+  <!-- Barre de navigation -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li>
+        <a href="#propos">À propos ▼</a>
+        <ul>
+          <li><a href="#">Notre équipe</a></li>
+          <li><a href="#">Historique</a></li>
+          <li><a href="#">Objectifs</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#journal">Journal ▼</a>
+        <ul>
+          <li><a href="#">Actualités</a></li>
+          <li><a href="#">Archives</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#activite">Activités ▼</a>
+        <ul>
+          <li><a href="#">Sportives</a></li>
+          <li><a href="#">Culturelles</a></li>
+          <li><a href="#">Voyages</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Section accueil -->
+  <section id="accueil" style="padding-top:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#F9FAFB; min-height:100vh;">
 
   <!-- Texte d'introduction -->
   <div style="text-align:center; margin-bottom:30px;">
@@ -49,3 +248,47 @@
     </div>
   </div>
 </section>
+
+  <section id="journal">
+    <h1>Journal de l'école</h1>
+    <p>Voici la section du journal de l'école.</p>
+  </section>
+
+  <section id="propos">
+    <h1>À propos</h1>
+    <p>Voici la section à propos de nous.</p>
+  </section>
+
+  <section id="activite">
+    <h1>Activités scolaires</h1>
+    <p>Ceci est la section activités scolaires.</p>
+  </section>
+
+  <!-- Script du slider -->
+  <script>
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const total = images.length;
+    let index = 0;
+
+    function updateSlide() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % total;
+      updateSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + total) % total;
+      updateSlide();
+    });
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      updateSlide();
+    }, 4000);
+  </script>
+</body>
+</html>
