@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu et slider centrés</title>
+<title>Slider centré et ajusté</title>
 
 <style>
-  /* --- Style général --- */
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -48,29 +47,28 @@
     color: #ff6600;
   }
 
-  /* --- Section accueil centrée --- */
+  /* --- Section accueil --- */
   #accueil {
-    height: 100vh; /* pleine hauteur */
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* centre verticalement */
-    align-items: center; /* centre horizontalement */
+    justify-content: center;
+    align-items: center;
+    padding-top: 70px;
     background: #F9FAFB;
-    color: #374151;
-    padding-top: 70px; /* évite que la navbar recouvre le contenu */
   }
 
   #accueil h1 {
-    margin-bottom: 5px; /* réduit l'espace sous le titre */
+    margin-bottom: 5px;
   }
 
   #accueil p {
     margin-top: 0;
-    margin-bottom: 10px; /* espace léger avant le slider */
+    margin-bottom: 10px;
     color: #555;
   }
 
-  /* --- Slider ajusté et centré --- */
+  /* --- Slider centré et images pleine largeur --- */
   .slider {
     width: 60%;
     max-width: 400px;
@@ -81,7 +79,8 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   }
 
- .slides {
+  /* La ligne clé : .slides fait la largeur totale = nb images × 100% */
+  .slides {
     display: flex;
     width: 100%;
     transition: transform 0.5s ease;
@@ -126,9 +125,9 @@
     min-height: 100vh;
   }
 
-  #journal { background: #E5E7EB; color: #374151; }
-  #propos { background: #F3F4F6; color: #374151; }
-  #activite { background: #E5E7EB; color: #374151; }
+  #journal { background: #E5E7EB; }
+  #propos { background: #F3F4F6; }
+  #activite { background: #E5E7EB; }
 </style>
 </head>
 <body>
@@ -143,24 +142,24 @@
     </ul>
   </nav>
 
-  <!-- Section accueil avec slider centré et espacement ajusté -->
+  <!-- Section accueil -->
   <section id="accueil">
-        <div class="slider">
-        <div class="slides">
+    <h1>Bienvenue sur la page d'accueil</h1>
+    <p>Ceci est la section d'accueil.</p>
+
+    <div class="slider">
+      <div class="slides">
         <img src="image/fff.jpg" alt="Image 1">
-        <img src="image/yyy.jpg" alt="Image 2">
-        <img src="image/hhh.jpg" alt="Image 3">
+        <img src="image/fff.jpg" alt="Image 2">
+        <img src="image/fff.jpg" alt="Image 3">
       </div>
       <div class="nav">
         <button id="prev">❮</button>
         <button id="next">❯</button>
       </div>
     </div>
-    <h1>Bienvenue sur la page d'accueil</h1>
-    <p>Ceci est la section d'accueil.</p>
   </section>
 
-  <!-- Autres sections -->
   <section id="journal">
     <h1>Journal de l'école</h1>
     <p>Voici la section du journal de l'école.</p>
@@ -183,6 +182,10 @@
     const total = images.length;
     let index = 0;
 
+    function updateSlide() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
     document.getElementById('next').addEventListener('click', () => {
       index = (index + 1) % total;
       updateSlide();
@@ -193,17 +196,9 @@
       updateSlide();
     });
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
-
     setInterval(() => {
       index = (index + 1) % total;
       updateSlide();
     }, 4000);
   </script>
 </body>
-</html>
-
-
-
