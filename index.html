@@ -99,7 +99,7 @@
   .accueil-cards {
     display: flex;
     flex-direction: column;
-    gap: 25px;       /* espace entre cartes */
+    gap: 20px;       /* espace entre cartes */
     min-width: 150px;
   }
 
@@ -132,7 +132,7 @@
   }
 
   #accueil h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-bottom: 8px;
     text-align: center;
     font-weight: bold;
@@ -315,12 +315,28 @@
 
   <!-- Section Accueil -->
   <section id="accueil">
+    <!-- Colonne gauche : cartes -->
+    <div class="accueil-cards">
+      <div class="card">
+        <h3>Nos valeurs</h3>
+        <p>Respect – Partage – Excellence</p>
+      </div>
+      <div class="card">
+        <h3>Notre mission</h3>
+        <p>Accompagner chaque élève vers la réussite.</p>
+      </div>
+      <div class="card">
+        <h3>Événements récents</h3>
+        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+      </div>
+    </div>
+
+    <!-- Colonne droite : texte + slider + boutons -->
     <div class="accueil-slider-col">
       <h1>Bienvenue à l'école Benramdani Sadia Tadmait</h1>
       <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-    </div>
-    <!-- Colonne gauche :texte + slider + boutons -- >
-    <!-- Slider -->
+
+      <!-- Slider -->
       <div class="slider">
         <div class="slides">
           <img src="image/fff.jpg" alt="Image 1">
@@ -339,25 +355,6 @@
         <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
       </div>
     </div>
-
-    <!-- Colonne droite :cartes-->
-
-    
-      <div class="card">
-        <h3>Nos valeurs</h3>
-        <p>Respect – Partage – Excellence</p>
-      </div>
-      <div class="card">
-        <h3>Notre mission</h3>
-        <p>Accompagner chaque élève vers la réussite.</p>
-      </div>
-      <div class="card">
-        <h3>Événements récents</h3>
-        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-      </div>
-    
-    
-      
   </section>
 
   <!-- Autres sections -->
@@ -406,6 +403,3 @@
   </script>
 </body>
 </html>
-
-
-
