@@ -1,47 +1,76 @@
-<section id="accueil">
-  <!-- Texte en haut -->
-  <div style="text-align:center; margin-bottom:30px;">
-    <h1>Bienvenue à l'école Benramdani Sadia Tadmait</h1>
-    <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-  </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Benramdani</title>
 
-  <!-- Ligne avec deux colonnes -->
-  <div style="display:flex; flex-wrap:wrap; gap:50px; justify-content:center; align-items:flex-start;">
-    <!-- Colonne gauche : Slider -->
-    <div class="accueil-slider-col" style="flex:1; min-width:300px; max-width:500px;">
-      <div class="slider">
-        <div class="slides">
-          <img src="image/fff.jpg" alt="Image 1">
-          <img src="image/hhh.jpg" alt="Image 2">
-          <img src="image/yyy.jpg" alt="Image 3">
-        </div>
-        <div class="nav">
-          <button id="prev">❮</button>
-          <button id="next">❯</button>
-        </div>
-      </div>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: #F9FAFB;
+  }
 
-      <!-- Boutons sous le slider -->
-      <div class="accueil-buttons" style="margin-top:15px;">
-        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
-        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
-      </div>
-    </div>
+  /* --- Barre de navigation --- */
+  .navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #333;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
 
-    <!-- Colonne droite : Cartes -->
-    <div class="accueil-cards" style="flex:1; min-width:250px; max-width:350px;">
-      <div class="card">
-        <h3>Nos valeurs</h3>
-        <p>Respect – Partage – Excellence</p>
-      </div>
-      <div class="card">
-        <h3>Notre mission</h3>
-        <p>Accompagner chaque élève vers la réussite.</p>
-      </div>
-      <div class="card">
-        <h3>Événements récents</h3>
-        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar ul li {
+    position: relative;
+  }
+
+  .navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+    padding: 10px 15px;
+    display: block;
+  }
+
+  .navbar ul li a:hover {
+    color: #ff6600;
+  }
+
+  .navbar ul li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    min-width: 180px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .navbar ul li ul li a {
+    padding: 10px 15px;
+    font-weight: normal;
+  }
+
+  .navbar ul
+
