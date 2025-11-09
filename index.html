@@ -82,54 +82,95 @@
     color: #ff6600;
   }
 
-  /* --- Section accueil --- */
+  /* --- Section Accueil --- */
   #accueil {
-    padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #F9FAFB;
+  }
+
+  /* Cartes à gauche */
+  .accueil-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 200px;
+  }
+
+  .accueil-cards .card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    text-align: center;
+  }
+
+  .accueil-cards .card h3 {
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+
+  .accueil-cards .card p {
+    font-size: 0.95rem;
+  }
+
+  /* Colonne droite : texte + boutons + slider */
+  .accueil-slider-col {
+    max-width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: #F9FAFB;
-    min-height: 100vh;
+    gap: 20px;
+    flex: 1;
   }
 
-#accueil h1 {
-    font-size: 2rem;       /* texte moins grand */
-    margin-bottom: 8px;    /* moins d'espace en dessous */
+  #accueil h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
     text-align: center;
-    font-weight: bold;     /* garde le titre visible */
-}
-}
+    font-weight: bold;
+  }
+
   #accueil p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #555;
-    max-width: 600px;
     text-align: center;
     margin-bottom: 20px;
   }
 
   /* Boutons Accueil */
+  .accueil-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .accueil-buttons button {
-    padding: 12px 25px;
+    padding: 8px 18px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1rem;
-    margin: 5px;
+    font-size: 0.9rem;
     transition: background 0.3s;
   }
+
   .accueil-buttons button:nth-child(1) { background:#ff6600; color:white; }
   .accueil-buttons button:nth-child(1):hover { background:#e65c00; }
   .accueil-buttons button:nth-child(2) { background:#333; color:white; }
   .accueil-buttons button:nth-child(2):hover { background:#555; }
 
-  /* --- Slider --- */
+  /* Slider */
   .slider {
-    width: 80%;
-    max-width: 700px;
+    width: 100%;
+    max-width: 600px;
     height: 350px;
-    margin-bottom: 50px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
@@ -175,34 +216,22 @@
     background-color: rgba(0,0,0,0.8);
   }
 
-  /* Cartes Accueil */
- .accueil-cards .card {
-  background:white;
-  padding:15px;       /* moins d'espace intérieur */
-  border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
-  min-width:180px;    /* plus étroit */
-  text-align:center;
-}
-
-.accueil-cards .card h3 {
-  margin-bottom:8px;
-  font-size:1.1rem;   /* titre plus petit */
-}
-
-.accueil-cards .card p {
-  font-size:0.95rem;  /* texte plus petit */
-}
-
-  /* --- Autres sections --- */
+  /* Autres sections */
   section {
     text-align: center;
     padding: 120px 20px 80px;
     min-height: 100vh;
   }
+
   #journal { background:#E5E7EB; }
   #propos { background:#F3F4F6; }
   #activite { background:#E5E7EB; }
+
+  /* Responsive */
+  @media screen and (max-width:900px) {
+    #accueil { flex-direction: column; align-items: center; }
+    .accueil-slider-col { max-width: 100%; }
+  }
 
 </style>
 </head>
@@ -239,55 +268,46 @@
   </nav>
 
   <!-- Section Accueil -->
-  <section id="accueil" style="padding-top:80px; min-height:100vh; display:flex; justify-content:center; align-items:center; gap:50px; flex-wrap:wrap; background:#F9FAFB;">
-
-  <!-- Colonne gauche : cartes -->
-  <div class="accueil-cards" style="display:flex; flex-direction:column; gap:20px; min-width:200px;">
-    <div class="card" style="background:white; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center;">
-      <h3 style="margin-bottom:8px; font-size:1.1rem;">Nos valeurs</h3>
-      <p style="font-size:0.95rem;">Respect – Partage – Excellence</p>
-    </div>
-    <div class="card" style="background:white; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center;">
-      <h3 style="margin-bottom:8px; font-size:1.1rem;">Notre mission</h3>
-      <p style="font-size:0.95rem;">Accompagner chaque élève vers la réussite.</p>
-    </div>
-    <div class="card" style="background:white; padding:15px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15); text-align:center;">
-      <h3 style="margin-bottom:8px; font-size:1.1rem;">Événements récents</h3>
-      <p style="font-size:0.95rem;">Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-    </div>
-  </div>
-
-  <!-- Colonne droite : texte + boutons + slider -->
-  <div style="display:flex; flex-direction:column; align-items:center; gap:20px; max-width:600px;">
-
-    <!-- Texte d'introduction -->
-    <div style="text-align:center;">
-      <h1 style="font-size:2rem; margin-bottom:8px;">Bienvenue à l'école XYZ</h1>
-      <p style="font-size:1rem; color:#555;">Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-    </div>
-
-    <!-- Boutons -->
-    <div class="accueil-buttons" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
-      <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})" style="padding:8px 18px; font-size:0.9rem; border:none; border-radius:5px; background:#ff6600; color:white; cursor:pointer; font-weight:bold;">Découvrir les activités</button>
-      <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})" style="padding:8px 18px; font-size:0.9rem; border:none; border-radius:5px; background:#333; color:white; cursor:pointer; font-weight:bold;">Voir le journal</button>
-    </div>
-
-    <!-- Slider -->
-    <div class="slider" style="width:100%; height:350px; position:relative; overflow:hidden; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.3);">
-      <div class="slides" style="display:flex; width:100%; height:100%; transition: transform 0.5s ease;">
-        <img src="image/fff.jpg" alt="Image 1" style="width:100%; height:100%; object-fit:cover; flex-shrink:0; border-radius:15px;">
-        <img src="image/hhh.jpg" alt="Image 2" style="width:100%; height:100%; object-fit:cover; flex-shrink:0; border-radius:15px;">
-        <img src="image/yyy.jpg" alt="Image 3" style="width:100%; height:100%; object-fit:cover; flex-shrink:0; border-radius:15px;">
+  <section id="accueil">
+    <!-- Colonne gauche : cartes -->
+    <div class="accueil-cards">
+      <div class="card">
+        <h3>Nos valeurs</h3>
+        <p>Respect – Partage – Excellence</p>
       </div>
-      <div class="nav" style="position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%);">
-        <button id="prev" style="background:rgba(0,0,0,0.5); border:none; color:white; padding:10px 15px; cursor:pointer; border-radius:50%; font-size:18px;">❮</button>
-        <button id="next" style="background:rgba(0,0,0,0.5); border:none; color:white; padding:10px 15px; cursor:pointer; border-radius:50%; font-size:18px;">❯</button>
+      <div class="card">
+        <h3>Notre mission</h3>
+        <p>Accompagner chaque élève vers la réussite.</p>
+      </div>
+      <div class="card">
+        <h3>Événements récents</h3>
+        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
       </div>
     </div>
 
-  </div>
+    <!-- Colonne droite : texte + boutons + slider -->
+    <div class="accueil-slider-col">
+      <h1>Bienvenue à l'école XYZ</h1>
+      <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
 
-</section>
+      <div class="accueil-buttons">
+        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
+      </div>
+
+      <div class="slider">
+        <div class="slides">
+          <img src="image/fff.jpg" alt="Image 1">
+          <img src="image/hhh.jpg" alt="Image 2">
+          <img src="image/yyy.jpg" alt="Image 3">
+        </div>
+        <div class="nav">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Autres sections -->
   <section id="journal">
@@ -333,8 +353,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
