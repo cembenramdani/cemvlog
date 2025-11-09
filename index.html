@@ -197,22 +197,53 @@
   </nav>
 
   <!-- Section accueil -->
+  
   <section id="accueil">
-    <h1>Bienvenue sur la page d'accueil</h1>
-    <p>Ceci est la section d'accueil.</p>
+  <!-- Texte d'introduction -->
+  <h1>Bienvenue à l'école XYZ</h1>
+  <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
 
-    <div class="slider">
-      <div class="slides">
-        <img src="image/fff.jpg" alt="Image 1">
-        <img src="image/fff.jpg" alt="Image 2">
-        <img src="image/fff.jpg" alt="Image 3">
-      </div>
-      <div class="nav">
-        <button id="prev">❮</button>
-        <button id="next">❯</button>
-      </div>
+  <!-- Boutons d'action -->
+  <div class="accueil-buttons" style="margin-bottom:20px;">
+    <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})" 
+            style="padding:10px 20px;margin-right:10px;border:none;background:#ff6600;color:white;border-radius:5px;cursor:pointer;">
+      Découvrir les activités
+    </button>
+    <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})"
+            style="padding:10px 20px;border:none;background:#333;color:white;border-radius:5px;cursor:pointer;">
+      Voir le journal
+    </button>
+  </div>
+
+  <!-- Slider centré -->
+  <div class="slider" id="accueil-slider" style="margin-bottom:30px;">
+    <div class="slides">
+      <img src="image/fff.jpg" alt="Image 1">
+      <img src="image/fff.jpg" alt="Image 2">
+      <img src="image/fff.jpg" alt="Image 3">
     </div>
-  </section>
+    <div class="nav">
+      <button id="prev">❮</button>
+      <button id="next">❯</button>
+    </div>
+  </div>
+
+  <!-- Cartes d'information -->
+  <div class="accueil-cards" style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
+      <h3>Nos valeurs</h3>
+      <p>Respect – Partage – Excellence</p>
+    </div>
+    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
+      <h3>Notre mission</h3>
+      <p>Accompagner chaque élève vers la réussite.</p>
+    </div>
+    <div class="card" style="background:white;padding:20px;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.2);min-width:180px;">
+      <h3>Événements récents</h3>
+      <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+    </div>
+  </div>
+</section>
 
   <section id="journal">
     <h1>Journal de l'école</h1>
@@ -257,3 +288,4 @@
   </script>
 </body>
 </html>
+
