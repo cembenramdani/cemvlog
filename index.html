@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Site Benramdani</title>
+<title>Site avec slider et menu déroulant</title>
 
 <style>
   body {
@@ -53,6 +53,7 @@
     color: #ff6600;
   }
 
+  /* --- Sous-menus --- */
   .navbar ul li ul {
     display: none;
     position: absolute;
@@ -83,67 +84,100 @@
 
   /* --- Section Accueil --- */
   #accueil {
-   padding-top: 120px;
-   text-align: center;
-  background: #F9FAFB;
+    display: flex;
+    flex-direction: row;       /* cartes à gauche, slider à droite */
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 100px;
+    min-height: 100vh;
+    flex-wrap: wrap;           /* responsive : cartes au-dessus si écran petit */
+    background: #F9FAFB;
+  }
 
-    
+  /* Cartes à gauche */
+  .accueil-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;       /* moins d'espace entre les cartes */
+  min-width: 150px; /* largeur plus petite */
+}
+
+.accueil-cards .card {
+  background: white;
+  padding: 10px;      /* moins d'espace intérieur */
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  font-size: 0.9rem;  /* réduit taille du texte général */
+}
+
+.accueil-cards .card h3 {
+  margin-bottom: 6px;
+  font-size: 1rem;   /* titre plus petit */
+}
+
+.accueil-cards .card p {
+  font-size: 0.85rem; /* texte plus petit */
+}
+
+
+  /* Colonne droite : texte + boutons + slider */
+  .accueil-slider-col {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
   }
 
   #accueil h1 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    text-align: center;
+    font-weight: bold;
   }
 
   #accueil p {
     font-size: 1rem;
     color: #555;
-    margin-bottom: 40px;
-  }
-
-  /* --- Section colonnes --- */
-  .accueil-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 50px;
-    flex-wrap: wrap;
-  }
-
-  /* Cartes à gauche*/
-  .accueil-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    min-width: 180px;
-    
-
-  .accueil-cards .card {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Boutons Accueil */
+  .accueil-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .accueil-buttons button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
     font-size: 0.9rem;
+    transition: background 0.3s;
   }
 
-  .accueil-cards .card h3 {
-    margin-bottom: 6px;
-    font-size: 1.1rem;
-  }
+  .accueil-buttons button:nth-child(1) { background:#ff6600; color:white; }
+  .accueil-buttons button:nth-child(1):hover { background:#e65c00; }
+  .accueil-buttons button:nth-child(2) { background:#333; color:white; }
+  .accueil-buttons button:nth-child(2):hover { background:#555; }
 
-  .accueil-cards .card p {
-    font-size: 0.9rem;
-  }
-
-  /* Slider à droite */
+  /* Slider */
   .slider {
-    width: 400px;
-    height: 220px;
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
   }
 
   .slides {
@@ -155,11 +189,10 @@
 
   .slides img {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
     flex-shrink: 0;
     border-radius: 15px;
-    background-color: #eee;
   }
 
   .nav {
@@ -186,30 +219,6 @@
     background-color: rgba(0,0,0,0.8);
   }
 
-  /* Boutons */
-  .accueil-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-
-  .accueil-buttons button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.3s;
-  }
-
-  .accueil-buttons button:nth-child(1) { background:#ff6600; color:white; }
-  .accueil-buttons button:nth-child(1):hover { background:#e65c00; }
-  .accueil-buttons button:nth-child(2) { background:#333; color:white; }
-  .accueil-buttons button:nth-child(2):hover { background:#555; }
-
   /* Autres sections */
   section {
     text-align: center;
@@ -223,26 +232,8 @@
 
   /* Responsive */
   @media screen and (max-width:900px) {
-    .accueil-content {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .slider {
-      width: 90%;
-      height: 180px;
-    }
-
-    .slides img {
-      height: 180px;
-    }
-  }
-
-  @media screen and (max-width:500px) {
-    .accueil-cards {
-      flex-direction: column;
-      width: 90%;
-    }
+    #accueil { flex-direction: column; align-items: center; }
+    .accueil-slider-col { max-width: 100%; }
   }
 
 </style>
@@ -254,7 +245,7 @@
     <ul>
       <li><a href="#accueil">Accueil</a></li>
       <li>
-        <a href="#propos">À propos</a>
+        <a href="#propos">À propos ▼</a>
         <ul>
           <li><a href="#">Notre équipe</a></li>
           <li><a href="#">Historique</a></li>
@@ -262,14 +253,14 @@
         </ul>
       </li>
       <li>
-        <a href="#journal">Journal</a>
+        <a href="#journal">Journal ▼</a>
         <ul>
           <li><a href="#">Actualités</a></li>
           <li><a href="#">Archives</a></li>
         </ul>
       </li>
       <li>
-        <a href="#activite">Activités</a>
+        <a href="#activite">Activités ▼</a>
         <ul>
           <li><a href="#">Sportives</a></li>
           <li><a href="#">Culturelles</a></li>
@@ -281,44 +272,41 @@
 
   <!-- Section Accueil -->
   <section id="accueil">
-    <h1>Bienvenue à l'école Benramdani Sadia Tadmait</h1>
-    <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
+    <!-- Colonne gauche : cartes -->
+    <div class="accueil-cards">
+      <div class="card">
+        <h3>Nos valeurs</h3>
+        <p>Respect – Partage – Excellence</p>
+      </div>
+      <div class="card">
+        <h3>Notre mission</h3>
+        <p>Accompagner chaque élève vers la réussite.</p>
+      </div>
+      <div class="card">
+        <h3>Événements récents</h3>
+        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+      </div>
+    </div>
 
-    <div class="accueil-content">
-      <!-- Colonne gauche : cartes -->
-      <div class="accueil-cards">
-        <div class="card">
-          <h3>Nos valeurs</h3>
-          <p>Respect – Partage – Excellence</p>
-        </div>
-        <div class="card">
-          <h3>Notre mission</h3>
-          <p>Accompagner chaque élève vers la réussite.</p>
-        </div>
-        <div class="card">
-          <h3>Événements récents</h3>
-          <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-        </div>
+    <!-- Colonne droite : texte + boutons + slider -->
+    <div class="accueil-slider-col">
+      <h1>Bienvenue à l'école XYZ</h1>
+      <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
+
+      <div class="accueil-buttons">
+        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
       </div>
 
-      <!-- Colonne droite : slider -->
-      <div>
-        <div class="slider">
-          <div class="slides">
-            <img src="image/fff.jpg" alt="Image 1">
-            <img src="image/hhh.jpg" alt="Image 2">
-            <img src="image/yyy.jpg" alt="Image 3">
-          </div>
-          <div class="nav">
-            <button id="prev">❮</button>
-            <button id="next">❯</button>
-          </div>
+      <div class="slider">
+        <div class="slides">
+          <img src="image/fff.jpg" alt="Image 1">
+          <img src="image/hhh.jpg" alt="Image 2">
+          <img src="image/yyy.jpg" alt="Image 3">
         </div>
-
-        <!-- Boutons -->
-        <div class="accueil-buttons">
-          <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
-          <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
+        <div class="nav">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
         </div>
       </div>
     </div>
@@ -348,26 +336,5 @@
     let index = 0;
 
     function updateSlide() {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % total;
-      updateSlide();
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + total) % total;
-      updateSlide();
-    });
-
-    setInterval(() => {
-      index = (index + 1) % total;
-      updateSlide();
-    }, 4000);
-  </script>
-</body>
-</html>
-
-
+      slides.style.transform = `translateX(-${index
 
