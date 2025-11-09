@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Site benramdani</title>
+<title>Site Benramdani</title>
 
 <style>
   body {
@@ -91,50 +91,49 @@
     gap: 50px;
     padding-top: 100px;
     min-height: 100vh;
-    flex-wrap: wrap;           /* responsive : cartes au-dessus si écran petit */
+    flex-wrap: wrap;
     background: #F9FAFB;
   }
 
   /* Cartes à gauche */
   .accueil-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;       /* moins d'espace entre les cartes */
-  min-width: 150px; /* largeur plus petite */
-}
+    display: flex;
+    flex-direction: column;
+    gap: 20px;       /* espace entre cartes */
+    min-width: 150px;
+  }
 
-.accueil-cards .card {
-  background: white;
-  padding: 10px;      /* moins d'espace intérieur */
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  text-align: center;
-  font-size: 0.9rem;  /* réduit taille du texte général */
-}
+  .accueil-cards .card {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    text-align: center;
+    font-size: 0.9rem;
+  }
 
-.accueil-cards .card h3 {
-  margin-bottom: 6px;
-  font-size: 1rem;   /* titre plus petit */
-}
+  .accueil-cards .card h3 {
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
 
-.accueil-cards .card p {
-  font-size: 0.85rem; /* texte plus petit */
-}
-
+  .accueil-cards .card p {
+    font-size: 0.85rem;
+  }
 
   /* Colonne droite : texte + boutons + slider */
- .accueil-slider-col {
-  max-width: 400px;       /* limite la largeur du slider et du texte */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-}
+  .accueil-slider-col {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+  }
 
   #accueil h1 {
-    font-size: 1rem;
-    margin-bottom: 6px;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
     text-align: center;
     font-weight: bold;
   }
@@ -171,13 +170,13 @@
 
   /* Slider */
   .slider {
-  width: 100%;            /* prend toute la largeur de sa colonne */
-  height: 200px;          /* réduit la hauteur pour harmoniser avec les cartes */
-  position: relative;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
+    width: 100%;
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  }
 
   .slides {
     display: flex;
@@ -188,11 +187,11 @@
 
   .slides img {
     width: 100%;
-  height: 200px; /* slider plus petit */
-  object-fit: cover; /* l’image entière est visible */
-  flex-shrink: 0;
-  border-radius: 15px;
-  background-color: #eee;
+    height: 220px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background-color: #eee;
   }
 
   .nav {
@@ -230,10 +229,54 @@
   #propos { background:#F3F4F6; }
   #activite { background:#E5E7EB; }
 
-  /* Responsive */
+  /* --- Responsive --- */
   @media screen and (max-width:900px) {
-    #accueil { flex-direction: column; align-items: center; }
-    .accueil-slider-col { max-width: 100%; }
+    #accueil {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding-top: 120px;
+    }
+
+    .accueil-slider-col {
+      max-width: 90%;
+      width: 100%;
+    }
+
+    .slider, .slides img {
+      height: 180px;
+    }
+
+    .accueil-cards {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .accueil-cards .card {
+      min-width: 140px;
+      font-size: 0.8rem;
+      padding: 8px;
+    }
+
+    .accueil-buttons button {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+    }
+  }
+
+  @media screen and (max-width:500px) {
+    .accueil-cards {
+      flex-direction: column;
+      gap: 15px;
+      width: 90%;
+    }
+
+    .accueil-cards .card {
+      width: 100%;
+      min-width: auto;
+    }
   }
 
 </style>
@@ -272,7 +315,6 @@
 
   <!-- Section Accueil -->
   <section id="accueil">
-    
     <!-- Colonne gauche : cartes -->
     <div class="accueil-cards">
       <div class="card">
@@ -288,52 +330,31 @@
         <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
       </div>
     </div>
-    <!-- Colonne droite : texte + boutons + slider -->
+
+    <!-- Colonne droite : texte + slider + boutons -->
     <div class="accueil-slider-col">
       <h1>Bienvenue à l'école Benramdani Sadia Tadmait</h1>
       <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-       <!-- Slider -->
-<div class="slider">
-  <div class="slides">
-    <img src="image/fff.jpg" alt="Image 1">
-    <img src="image/hhh.jpg" alt="Image 2">
-    <img src="image/yyy.jpg" alt="Image 3">
-  </div>
-  <div class="nav">
-    <button id="prev">❮</button>
-    <button id="next">❯</button>
-  </div>
-</div>
 
-<!-- Script du slider -->
-<script>
-  const slides = document.querySelector('.slides');
-  const images = document.querySelectorAll('.slides img');
-  const total = images.length;
-  let index = 0;
+      <!-- Slider -->
+      <div class="slider">
+        <div class="slides">
+          <img src="image/fff.jpg" alt="Image 1">
+          <img src="image/hhh.jpg" alt="Image 2">
+          <img src="image/yyy.jpg" alt="Image 3">
+        </div>
+        <div class="nav">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+        </div>
+      </div>
 
-  function updateSlide() {
-    slides.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  // Flèches
-  document.getElementById('next').addEventListener('click', () => {
-    index = (index + 1) % total;
-    updateSlide();
-  });
-
-  document.getElementById('prev').addEventListener('click', () => {
-    index = (index - 1 + total) % total;
-    updateSlide();
-  });
-
-  // Défilement automatique
-  setInterval(() => {
-    index = (index + 1) % total;
-    updateSlide();
-  }, 4000); // toutes les 4 secondes
-</script>
-   
+      <!-- Boutons -->
+      <div class="accueil-buttons">
+        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
+      </div>
+    </div>
   </section>
 
   <!-- Autres sections -->
@@ -352,27 +373,33 @@
     <p>Ceci est la section activités scolaires.</p>
   </section>
 
- 
+  <!-- Script du slider -->
+  <script>
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const total = images.length;
+    let index = 0;
 
+    function updateSlide() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
 
+    // Flèches
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % total;
+      updateSlide();
+    });
 
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + total) % total;
+      updateSlide();
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Défilement automatique
+    setInterval(() => {
+      index = (index + 1) % total;
+      updateSlide();
+    }, 4000); // toutes les 4 secondes
+  </script>
+</body>
+</html>
