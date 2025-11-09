@@ -123,14 +123,14 @@
 
 
   /* Colonne droite : texte + boutons + slider */
-  .accueil-slider-col {
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    flex: 1;
-  }
+ .accueil-slider-col {
+  max-width: 400px;       /* limite la largeur du slider et du texte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
 
   #accueil h1 {
     font-size: 1rem;
@@ -171,14 +171,13 @@
 
   /* Slider */
   .slider {
-    width: 100%;
-    max-width: 600px;
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
-  }
+  width: 100%;            /* prend toute la largeur de sa colonne */
+  height: 250px;          /* réduit la hauteur pour harmoniser avec les cartes */
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
 
   .slides {
     display: flex;
@@ -334,6 +333,7 @@
 
     function updateSlide() {
       slides.style.transform = `translateX(-${index
+
 
 
 
