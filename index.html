@@ -57,19 +57,28 @@
     align-items: center; /* centre horizontalement */
     background: #F9FAFB;
     color: #374151;
-    padding-top: 70px; /* pour éviter que la navbar masque le contenu */
+    padding-top: 70px; /* évite que la navbar recouvre le contenu */
+  }
+
+  #accueil h1 {
+    margin-bottom: 5px; /* réduit l'espace sous le titre */
+  }
+
+  #accueil p {
+    margin-top: 0;
+    margin-bottom: 10px; /* espace léger avant le slider */
+    color: #555;
   }
 
   /* --- Slider ajusté et centré --- */
   .slider {
     width: 60%;
-    max-width: 400px; /* largeur maximale */
-    height: 200px; /* hauteur réduite */
+    max-width: 400px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    margin-top: 30px;
   }
 
   .slides {
@@ -79,8 +88,8 @@
 
   .slides img {
     width: 100%;
-    height: 200px; /* même hauteur que le conteneur */
-    object-fit: cover; /* recadre joliment les images */
+    height: 200px;
+    object-fit: cover;
     border-radius: 15px;
   }
 
@@ -132,7 +141,7 @@
     </ul>
   </nav>
 
-  <!-- Section accueil avec slider centré -->
+  <!-- Section accueil avec slider centré et espacement ajusté -->
   <section id="accueil">
     <h1>Bienvenue sur la page d'accueil</h1>
     <p>Ceci est la section d'accueil.</p>
