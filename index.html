@@ -85,65 +85,38 @@
   /* --- Section Accueil --- */
   #accueil {
     display: flex;
-    flex-direction: row;       /* cartes à gauche, slider à droite */
-    align-items: flex-start;
-    justify-content: center;
-    gap: 50px;
-    padding-top: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top:75px;
+	
     min-height: 100vh;
-    flex-wrap: wrap;           /* responsive : cartes au-dessus si écran petit */
     background: #F9FAFB;
+    gap: 30px;
   }
 
-  /* Cartes à gauche */
-  .accueil-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;       /* moins d'espace entre les cartes */
-  min-width: 150px; /* largeur plus petite */
-}
-
-.accueil-cards .card {
-  background: white;
-  padding: 10px;      /* moins d'espace intérieur */
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  text-align: center;
-  font-size: 0.9rem;  /* réduit taille du texte général */
-}
-
-.accueil-cards .card h3 {
-  margin-bottom: 6px;
-  font-size: 1rem;   /* titre plus petit */
-}
-
-.accueil-cards .card p {
-  font-size: 0.85rem; /* texte plus petit */
-}
-
-
-  /* Colonne droite : texte + boutons + slider */
-  .accueil-slider-col {
-    max-width: 600px;
+  /* Texte et slider regroupés */
+  .accueil-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    flex: 1;
+    max-width: 1000px;
+    text-align: center;
+	
   }
 
   #accueil h1 {
-    font-size: 1rem;
-    margin-bottom: 6px;
-    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
     font-weight: bold;
+	padding-top:5px;
   }
 
   #accueil p {
     font-size: 1rem;
     color: #555;
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   /* Boutons Accueil */
@@ -164,16 +137,21 @@
     transition: background 0.3s;
   }
 
-  .accueil-buttons button:nth-child(1) { background:#ff6600; color:white; }
-  .accueil-buttons button:nth-child(1):hover { background:#e65c00; }
-  .accueil-buttons button:nth-child(2) { background:#333; color:white; }
-  .accueil-buttons button:nth-child(2):hover { background:#555; }
+  .accueil-buttons button:nth-child(1),
+  .accueil-buttons button:nth-child(2) {
+    background:#ff6600;
+    color:white;
+  }
+
+  .accueil-buttons button:hover {
+    background:#333;
+  }
 
   /* Slider */
   .slider {
     width: 100%;
-    max-width: 600px;
-    height: 350px;
+    max-width: 1000px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     border-radius: 15px;
@@ -219,6 +197,38 @@
     background-color: rgba(0,0,0,0.8);
   }
 
+  /* Cartes sous le slider */
+  .accueil-cards {
+    display: flex;
+  flex-direction: row;      /* cartes en ligne */
+  justify-content: center;  /* centrées horizontalement */
+  align-items: stretch;     /* même hauteur */
+  gap: 20px;                /* espace entre les cartes */
+  flex-wrap: wrap;          /* permet le retour à la ligne sur petits écrans */
+  width: 100%;
+  max-width: 1000px;        /* limite la largeur totale */
+  margin-top: 20px;
+  }
+
+  .accueil-cards .card {
+    flex: 1;                  /* les cartes prennent la même largeur */
+  min-width: 250px;         /* largeur minimale pour éviter qu’elles soient trop petites */
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  text-align: center;
+  }
+
+  .accueil-cards .card h3 {
+    margin-bottom: 6px;
+    font-size: 1rem;
+  }
+
+  .accueil-cards .card p {
+    font-size: 0.85rem;
+  }
+
   /* Autres sections */
   section {
     text-align: center;
@@ -226,16 +236,9 @@
     min-height: 100vh;
   }
 
-  #journal { background:#E5E7EB; }
-  #propos { background:#F3F4F6; }
-  #activite { background:#E5E7EB; }
-
-  /* Responsive */
-  @media screen and (max-width:900px) {
-    #accueil { flex-direction: column; align-items: center; }
-    .accueil-slider-col { max-width: 100%; }
+  #journal, #propos, #sport, #culture, #activite {
+    background:#F3F4F6;
   }
-
 </style>
 </head>
 <body>
@@ -269,10 +272,31 @@
       </li>
     </ul>
   </nav>
-
-  <!-- Section Accueil -->
+<!-- Section Accueil -->
   <section id="accueil">
-    <!-- Colonne gauche : cartes -->
+    <div class="accueil-header">
+      
+      <div class="slider">
+              <div class="slider">
+        <div class="slides">
+          <img src="image/fff.jpg" alt="Image 1">
+          <img src="image/hhh.jpg" alt="Image 2">
+          <img src="image/yyy.jpg" alt="Image 3">
+        </div>
+        <div class="nav">
+          <button id="prev">❮</button>
+          <button id="next">❯</button>
+        </div>
+      </div>
+	  <h1>Bienvenue à l'école Benramdani Sadia TADMAIT <br> <p>découvrez notre univers, nos activités et notre passion pour l'éducation.</p></h1>
+      
+      <div class="accueil-buttons">
+        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
+      </div>
+
+    </div>
+	 <!-- Cartes en colonne -->
     <div class="accueil-cards">
       <div class="card">
         <h3>Nos valeurs</h3>
@@ -287,29 +311,42 @@
         <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Colonne droite : texte + boutons + slider -->
-    <div class="accueil-slider-col">
-      <h1>Bienvenue à l'école XYZ</h1>
-      <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
+  <!-- Autres sections -->
+  <section id="journal"><h1>Journal de l'école</h1></section>
+  <section id="propos"><h1>À propos</h1></section>
+  <section id="activite"><h1>Activités scolaires</h1></section>
+  <section id="culture"><h1>Culture</h1></section>
+  <section id="sport"><h1>Sport</h1></section>
 
-      <div class="accueil-buttons">
-        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
-        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
-      </div>
+  <!-- Script du slider -->
+  <script>
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const total = images.length;
+    let index = 0;
 
-      <div class="slider">
-        <div class="slides">
-          <img src="image/fff.jpg" alt="Image 1">
-          <img src="image/hhh.jpg" alt="Image 2">
-          <img src="image/yyy.jpg" alt="Image 3">
-        </div>
-        <div class="nav">
-          <button id="prev">❮</button>
-          <button id="next">❯</button>
-        </div>
-      </div>
-    </div>
+    function updateSlide() {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % total;
+      updateSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + total) % total;
+      updateSlide();
+    });
+
+    setInterval(() => {
+      index = (index + 1) % total;
+      updateSlide();
+    }, 5000);
+  </script>
+
   </section>
 
   <!-- Autres sections -->
@@ -326,8 +363,16 @@
   <section id="activite">
     <h1>Activités scolaires</h1>
     <p>Ceci est la section activités scolaires.</p>
+	
+	<div class="accueil-buttons">
+        <button onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</button>
+        <button onclick="document.getElementById('culture').scrollIntoView({behavior:'smooth'})">Activités culturelles</button>
+        <button onclick="document.getElementById('sport').scrollIntoView({behavior:'smooth'})">activités sportives</button>
+	  </div>
+	
   </section>
-
+  <section id="culture"> ceci est la section culturelle</div>
+   <section id="sport"> ceci  est la section sport</div>
   <!-- Script du slider -->
   <script>
     const slides = document.querySelector('.slides');
@@ -336,5 +381,22 @@
     let index = 0;
 
     function updateSlide() {
-      slides.style.transform = `translateX(-${index
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
 
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % total; // passe à l’image suivante
+      updateSlide();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + total) % total; // revient à l’image précédente
+      updateSlide();
+    });
+
+    // Optionnel : défilement automatique toutes les 5 secondes
+    setInterval(() => {
+      index = (index + 1) % total;
+      updateSlide();
+    }, 5000);
+  </script>
