@@ -236,9 +236,46 @@
     min-height: 100vh;
   }
 
-  #journal, #propos, #sport, #culture, #activite {
+  #journal, #propos, #sport, #culture, #activite, #cours {
     background:#F3F4F6;
   }
+  
+  .cours-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cours-card {
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.cours-card:hover {
+  transform: scale(1.05);
+}
+
+.cours-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.cours-card a {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 5px 10px;
+  background-color: #008CBA;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+  
 </style>
 </head>
 <body>
@@ -249,6 +286,14 @@
       <li><a href="#accueil">Accueil</a></li>
       <li>
         <a href="#propos">À propos ▼</a>
+        <ul>
+          <li><a href="#">Notre équipe</a></li>
+          <li><a href="#">Historique</a></li>
+          <li><a href="#">Objectifs</a></li>
+        </ul>
+      </li>
+	        <li>
+        <a href="#cours">Cours ▼</a>
         <ul>
           <li><a href="#">Notre équipe</a></li>
           <li><a href="#">Historique</a></li>
@@ -279,9 +324,9 @@
       
       <div class="slider">
         <div class="slides">
-          <img src="image/fff.jpg" alt="Image 1">
-          <img src="image/yyy.jpg" alt="Image 2">
-          <img src="image/hhh.jpg" alt="Image 3">
+          <img src="C:\Users\DELL\Desktop\ssite\images/fff.jpg" alt="Image 1">
+          <img src="C:\Users\DELL\Desktop\ssite\images/yyy.jpg" alt="Image 2">
+          <img src="C:\Users\DELL\Desktop\ssite\images/yyy.jpg" alt="Image 3">
         </div>
         <div class="nav">
           <button id="prev">❮</button>
@@ -316,6 +361,7 @@
   <!-- Autres sections -->
   <section id="journal"><h1>Journal de l'école</h1></section>
   <section id="propos"><h1>À propos</h1></section>
+  <section id="cours"><h1>Cours</h1></section>
   <section id="activite"><h1>Activités scolaires</h1></section>
   <section id="culture"><h1>Culture</h1></section>
   <section id="sport"><h1>Sport</h1></section>
@@ -359,7 +405,29 @@
     <h1>À propos</h1>
     <p>Voici la section à propos de nous.</p>
   </section>
+<section id="cours">
+          <h2>Cours de math</h2>
+  <div class="cours-container">
+    <div class="cours-card">
+      <img src="image/yyy.jpg" alt="yyy">
+      <h3>رياضيات</h3>
+      <a href="https://www.youtube.com/watch?v=2_pih9KGZgk&list=PLvfmLmn0aWa0bjbPHdO_JVd5fXA8JKzkO" target="_blank">شاهد</a>
+    </div>
 
+    <div class="cours-card">
+      <img src="image/hhh.jpg" alt="hhh">
+      <h3>لغة عربية</h3>
+      <a href="https://www.youtube.com/watch?v=YYYYY" target="_blank">شاهد</a>
+    </div>
+
+    <div class="cours-card">
+      <img src="image/fff.jpg" alt="fff">
+      <h3>لغة إنجليزيّة</h3>
+      <a href="https://www.youtube.com/watch?v=4r8_NI6GAzs" target="_blank">شاهد</a>
+    </div>
+  </div>
+
+</section>
   <section id="activite">
     <h1>Activités scolaires</h1>
     <p>Ceci est la section activités scolaires.</p>
