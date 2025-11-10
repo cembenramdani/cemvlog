@@ -13,7 +13,7 @@
     background: #F9FAFB;
   }
 
-  /* --- Navbar --- */
+  /* Navbar */
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -26,343 +26,80 @@
     z-index: 1000;
   }
 
-  .navbar .logo {
-    color: white;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
+  .navbar .logo { color:white; font-size:1.5em; font-weight:bold;}
+  .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0;}
+  .nav-links li { position:relative;}
+  .nav-links li a { color:white; text-decoration:none; font-weight:bold; font-size:16px; padding:10px 15px; display:block; transition: color 0.3s;}
+  .nav-links li a:hover { color:#ff6600;}
+  .nav-links li ul { display:none; position:absolute; top:100%; left:0; background-color:#333; padding:0; margin:0; list-style:none; min-width:180px; border-radius:0 0 8px 8px; box-shadow:0 4px 8px rgba(0,0,0,0.3);}
+  .nav-links li ul li a { padding:10px 15px; font-weight:normal;}
+  .nav-links li:hover ul { display:block;}
+  .nav-links li ul li a:hover { background-color:#444; color:#ff6600;}
+  .menu-toggle { display:none; font-size:1.8em; color:white; cursor:pointer;}
 
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-    padding: 0;
-  }
+  /* Sections */
+  section { padding: 100px 20px 60px; min-height:100vh; text-align:center;}
+  section h1,h2 { margin-bottom:20px;}
+  
+  /* Accueil */
+  .accueil-header { display:flex; flex-direction:column; align-items:center; gap:20px; max-width:1000px; text-align:center;}
+  #accueil h1 { font-size:1.5rem; margin:0; padding-top:5px;}
+  #accueil p { font-size:1rem; color:#555; margin:0;}
+  .accueil-buttons { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:10px;}
+  .accueil-buttons button { padding:8px 18px; border:none; border-radius:5px; cursor:pointer; font-weight:bold; font-size:0.9rem; transition: background 0.3s; background:#ff6600; color:white;}
+  .accueil-buttons button:hover { background:#333;}
+  
+  .slider { width:100%; max-width:1000px; height:200px; position:relative; overflow:hidden; border-radius:15px; box-shadow:0 4px 15px rgba(0,0,0,0.3);}
+  .slides { display:flex; width:100%; height:100%; transition: transform 0.5s ease;}
+  .slides img { width:100%; height:100%; object-fit:cover; flex-shrink:0; border-radius:15px;}
+  .nav { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; transform:translateY(-50%);}
+  .nav button { background-color: rgba(0,0,0,0.5); border:none; color:white; padding:10px 15px; cursor:pointer; border-radius:50%; font-size:18px; transition: background-color 0.3s;}
+  .nav button:hover { background-color: rgba(0,0,0,0.8);}
+  
+  .accueil-cards { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:20px;}
+  .accueil-cards .card { flex:1; min-width:250px; background:white; padding:15px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.15); text-align:center;}
+  .accueil-cards .card h3 { margin-bottom:6px; font-size:1rem;}
+  .accueil-cards .card p { font-size:0.85rem;}
 
-  .nav-links li {
-    position: relative;
-  }
+  /* Cours */
+  #cours { background:#f9f9f9; padding:60px 20px;}
+  .cours-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px;}
+  .cours-card { background:white; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:300px; padding:15px; transition:transform 0.3s ease;}
+  .cours-card:hover { transform:scale(1.03);}
+  .video-wrapper { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;}
+  .video-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:10px;}
 
-  .nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 10px 15px;
-    display: block;
-    transition: color 0.3s;
-  }
-
-  .nav-links li a:hover {
-    color: #ff6600;
-  }
-
-  .nav-links li ul {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #333;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    min-width: 180px;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-
-  .nav-links li ul li a {
-    padding: 10px 15px;
-    font-weight: normal;
-  }
-
-  .nav-links li:hover ul {
-    display: block;
-  }
-
-  .nav-links li ul li a:hover {
-    background-color: #444;
-    color: #ff6600;
-  }
-
-  .menu-toggle {
-    display: none;
-    font-size: 1.8em;
-    color: white;
-    cursor: pointer;
-  }
-
-  /* --- Slider & section Accueil --- */
-  #accueil {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top:75px;
-    min-height: 100vh;
-    background: #F9FAFB;
-    gap: 30px;
-  }
-
-  .accueil-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    max-width: 1000px;
-    text-align: center;
-  }
-
-  #accueil h1 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    font-weight: bold;
-    padding-top:5px;
-  }
-
-  #accueil p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 10px;
-  }
-
-  .accueil-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .accueil-buttons button {
-    padding: 8px 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.3s;
-    background:#ff6600;
-    color:white;
-  }
-
-  .accueil-buttons button:hover {
-    background:#333;
-  }
-
-  .slider {
-    width: 100%;
-    max-width: 1000px;
-    height: 200px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.3);
-  }
-
-  .slides {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease;
-  }
-
-  .slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: 15px;
-  }
-
-  .nav {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-  }
-
-  .nav button {
-    background-color: rgba(0,0,0,0.5);
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 18px;
-    transition: background-color 0.3s;
-  }
-
-  .nav button:hover {
-    background-color: rgba(0,0,0,0.8);
-  }
-
-  .accueil-cards {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 1000px;
-    margin-top: 20px;
-  }
-
-  .accueil-cards .card {
-    flex: 1;
-    min-width: 250px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    text-align: center;
-  }
-
-  .accueil-cards .card h3 {
-    margin-bottom: 6px;
-    font-size: 1rem;
-  }
-
-  .accueil-cards .card p {
-    font-size: 0.85rem;
-  }
-
-  /* --- Sections cours --- */
-  #cours {
-    text-align: center;
-    padding: 40px;
-    background-color: #f9f9f9;
-  }
-
-  #cours h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-  }
-
-  .cours-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-  }
-
-  .cours-card {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    width: 300px;
-    padding: 15px;
-    transition: transform 0.3s ease;
-  }
-
-  .cours-card:hover {
-    transform: scale(1.03);
-  }
-
-  .video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 10px;
-  }
-
-  .video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 10px;
-  }
-
-  /* --- Mobile --- */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
-
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      width: 100%;
-      background-color: #333;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      text-align: center;
-      padding: 10px 0;
-      z-index: 999;
-    }
-
-    .nav-links.active {
-      display: flex;
-    }
-
-    .nav-links li {
-      width: 100%;
-    }
-
-    .nav-links li ul {
-      position: relative;
-      top: 0;
-      box-shadow: none;
-      border-radius: 0;
-    }
-
-    .nav-links li:hover ul {
-      display: none;
-    }
+  /* Mobile */
+  @media(max-width:768px){
+    .menu-toggle { display:block;}
+    .nav-links { display:none; flex-direction:column; width:100%; background-color:#333; position:absolute; top:60px; left:0; text-align:center; padding:10px 0; z-index:999;}
+    .nav-links.active { display:flex;}
+    .nav-links li { width:100%;}
+    .nav-links li ul { position:relative; top:0; box-shadow:none; border-radius:0;}
+    .nav-links li:hover ul { display:none;}
   }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
-  <div class="logo">Benramdani college</div>
+  <div class="logo">Benramdani College</div>
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <ul class="nav-links">
     <li><a href="#accueil">Accueil</a></li>
-    <li>
-      <a href="#propos">À propos ▼</a>
-      <ul>
-        <li><a href="#">Notre équipe</a></li>
-        <li><a href="#">Historique</a></li>
-        <li><a href="#">Objectifs</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#cours">Cours ▼</a>
-      <ul>
-        <li><a href="#">معلوماتية</a></li>
-        <li><a href="#">لغة إنجليزيّة</a></li>
-        <li><a href="#">التربية البدنيّة</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#journal">Journal ▼</a>
-      <ul>
-        <li><a href="#">Actualités</a></li>
-        <li><a href="#">Archives</a></li>
-      </ul>
-    </li>
+    <li><a href="#propos">À propos</a></li>
+    <li><a href="#cours">Cours</a></li>
+    <li><a href="#journal">Journal</a></li>
     <li>
       <a href="#activite">Activités ▼</a>
       <ul>
         <li><a href="#sport">Sportives</a></li>
         <li><a href="#culture">Culturelles</a></li>
-        <li><a href="#voyage">Voyages</a></li>
       </ul>
     </li>
   </ul>
 </nav>
 
-<!-- Section Accueil -->
 <section id="accueil">
   <div class="accueil-header">
     <div class="slider">
@@ -383,46 +120,22 @@
       <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
     </div>
   </div>
-
   <div class="accueil-cards">
-    <div class="card">
-      <h3>Nos valeurs</h3>
-      <p>Respect – Partage – Excellence</p>
-    </div>
-    <div class="card">
-      <h3>Notre mission</h3>
-      <p>Accompagner chaque élève vers la réussite.</p>
-    </div>
-    <div class="card">
-      <h3>Événements récents</h3>
-      <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
-    </div>
+    <div class="card"><h3>Nos valeurs</h3><p>Respect – Partage – Excellence</p></div>
+    <div class="card"><h3>Notre mission</h3><p>Accompagner chaque élève vers la réussite.</p></div>
+    <div class="card"><h3>Événements récents</h3><p>Voyages, fêtes et activités scolaires à ne pas manquer.</p></div>
   </div>
 </section>
 
-<!-- Section Cours -->
 <section id="cours">
   <h2>الدّروس</h2>
   <div class="cours-container">
-    <div class="cours-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Yoga" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="cours-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Cardio" allowfullscreen></iframe>
-      </div>
-    </div>
-    <div class="cours-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Musculation" allowfullscreen></iframe>
-      </div>
-    </div>
+    <div class="cours-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" allowfullscreen></iframe></div></div>
+    <div class="cours-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" allowfullscreen></iframe></div></div>
+    <div class="cours-card"><div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" allowfullscreen></iframe></div></div>
   </div>
 </section>
 
-<!-- Autres sections -->
 <section id="activite">
   <h1>Activités scolaires</h1>
   <p>Ceci est la section activités scolaires.</p>
@@ -438,45 +151,21 @@
   <p>Ceci est la section sport.</p>
 </section>
 
-  <section id="apropos">
-  <h1>a propos </h1>
-  <p>ceci est la section a propos de nous.</p>
+<section id="propos">
+  <h1>À propos</h1>
+  <p>Ceci est la section à propos de nous.</p>
 </section>
-<!-- Slider JS -->
+
 <script>
 const slides = document.querySelector('.slides');
 const images = document.querySelectorAll('.slides img');
-const total = images.length;
 let index = 0;
+function updateSlide(){slides.style.transform=`translateX(-${index*100}%)`;}
+document.getElementById('next').addEventListener('click',()=>{index=(index+1)%images.length; updateSlide();});
+document.getElementById('prev').addEventListener('click',()=>{index=(index-1+images.length)%images.length; updateSlide();});
+setInterval(()=>{index=(index+1)%images.length; updateSlide();},5000);
 
-function updateSlide() {
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
-
-document.getElementById('next').addEventListener('click', () => {
-  index = (index + 1) % total;
-  updateSlide();
-});
-
-document.getElementById('prev').addEventListener('click', () => {
-  index = (index - 1 + total) % total;
-  updateSlide();
-});
-
-setInterval(() => {
-  index = (index + 1) % total;
-  updateSlide();
-}, 5000);
-
-// Menu burger
-function toggleMenu() {
-  const nav = document.querySelector('.nav-links');
-  nav.classList.toggle('active');
-}
+function toggleMenu(){document.querySelector('.nav-links').classList.toggle('active');}
 </script>
 </body>
 </html>
-
-
-
-
