@@ -78,12 +78,41 @@
     .nav-links li ul { position:relative; top:0; box-shadow:none; border-radius:0;}
     .nav-links li:hover ul { display:none;}
   }
+  .menu-toggle {
+  display: none; /* visible seulement sur mobile */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+@media(max-width:768px){
+  .menu-toggle { display:flex; }
+}
+
+  
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="logo">Benramdani College</div>
+  <div class="menu-toggle" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <ul class="nav-links">
     <li><a href="#accueil">Accueil</a></li>
@@ -196,4 +225,5 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 </script>
 </body>
 </html>
+
 
