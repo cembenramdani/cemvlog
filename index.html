@@ -166,6 +166,34 @@ document.getElementById('prev').addEventListener('click',()=>{index=(index-1+ima
 setInterval(()=>{index=(index+1)%images.length; updateSlide();},5000);
 
 function toggleMenu(){document.querySelector('.nav-links').classList.toggle('active');}
+
+  // Fermer le menu mobile après clic
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('.nav-links');
+    if(nav.classList.contains('active')){
+      nav.classList.remove('active');
+    }
+  });
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault(); // empêche le scroll instantané par défaut
+    const targetId = link.getAttribute('href').substring(1);
+    const targetSection = document.getElementById(targetId);
+    const navHeight = document.querySelector('.navbar').offsetHeight;
+    window.scrollTo({
+      top: targetSection.offsetTop - navHeight,
+      behavior: 'smooth'
+    });
+    // fermer le menu
+    const nav = document.querySelector('.nav-links');
+    nav.classList.remove('active');
+  });
+});
+  
 </script>
 </body>
 </html>
+
