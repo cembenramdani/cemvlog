@@ -72,11 +72,38 @@
   /* Mobile */
   @media(max-width:768px){
     .menu-toggle { display:block;}
-    .nav-links { display:none; flex-direction:column; width:100%; background-color:#333; position:absolute; top:60px; left:0; text-align:center; padding:10px 0; z-index:999;}
-    .nav-links.active { display:flex;}
-    .nav-links li { width:100%;}
-    .nav-links li ul { position:relative; top:0; box-shadow:none; border-radius:0;}
-    .nav-links li:hover ul { display:none;}
+    .nav-links {  display: none;
+    flex-direction: column;
+    width: 80%;               /* ne prend pas tout l’écran */
+    max-height: 80vh;         /* limite la hauteur à 80% de l’écran */
+    overflow-y: auto;         /* scroll interne si contenu trop grand */
+    background-color: #333;
+    position: absolute;
+    top: 60px;                /* juste sous la navbar */
+    left: 10%;                /* centré horizontalement */
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    z-index: 1000;}
+    .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li ul {
+    position: relative;
+    top: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .nav-links li:hover ul {
+    display: none;
+  }
+}
   }
   .menu-toggle {
   display: none; /* visible seulement sur mobile */
@@ -224,6 +251,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 </script>
 </body>
 </html>
+
 
 
 
