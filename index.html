@@ -292,6 +292,36 @@
   border: none;
   border-radius: 10px;
 }
+
+
+	.menu-toggle {
+  display: none;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+
+/* --- STYLE POUR MOBILE --- */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    width: 100%;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex; /* Afficher quand on clique */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
   
 </style>
 </head>
@@ -495,5 +525,11 @@
       updateSlide();
     }, 5000);
   </script>
+<script>
+function toggleMenu() {
+  const nav = document.querySelector('.nav-links');
+  nav.classList.toggle('active');
+}
+</script>
 
 
