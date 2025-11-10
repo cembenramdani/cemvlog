@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Site avec slider et menu déroulant</title>
-
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -14,20 +13,26 @@
     background: #F9FAFB;
   }
 
-  /* --- Barre de navigation --- */
+  /* --- Navbar --- */
   .navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background: #333;
     padding: 15px 20px;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1000;
   }
 
-  .navbar ul {
+  .navbar .logo {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .nav-links {
     list-style: none;
     display: flex;
     gap: 25px;
@@ -35,26 +40,25 @@
     padding: 0;
   }
 
-  .navbar ul li {
+  .nav-links li {
     position: relative;
   }
 
-  .navbar ul li a {
+  .nav-links li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
-    transition: color 0.3s;
     padding: 10px 15px;
     display: block;
+    transition: color 0.3s;
   }
 
-  .navbar ul li a:hover {
+  .nav-links li a:hover {
     color: #ff6600;
   }
 
-  /* --- Sous-menus --- */
-  .navbar ul li ul {
+  .nav-links li ul {
     display: none;
     position: absolute;
     top: 100%;
@@ -68,34 +72,39 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   }
 
-  .navbar ul li ul li a {
+  .nav-links li ul li a {
     padding: 10px 15px;
     font-weight: normal;
   }
 
-  .navbar ul li:hover ul {
+  .nav-links li:hover ul {
     display: block;
   }
 
-  .navbar ul li ul li a:hover {
+  .nav-links li ul li a:hover {
     background-color: #444;
     color: #ff6600;
   }
 
-  /* --- Section Accueil --- */
+  .menu-toggle {
+    display: none;
+    font-size: 1.8em;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* --- Slider & section Accueil --- */
   #accueil {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding-top:75px;
-	
     min-height: 100vh;
     background: #F9FAFB;
     gap: 30px;
   }
 
-  /* Texte et slider regroupés */
   .accueil-header {
     display: flex;
     flex-direction: column;
@@ -103,14 +112,13 @@
     gap: 20px;
     max-width: 1000px;
     text-align: center;
-	
   }
 
   #accueil h1 {
     font-size: 1.5rem;
     margin-bottom: 5px;
     font-weight: bold;
-	padding-top:5px;
+    padding-top:5px;
   }
 
   #accueil p {
@@ -119,7 +127,6 @@
     margin-bottom: 10px;
   }
 
-  /* Boutons Accueil */
   .accueil-buttons {
     display: flex;
     gap: 10px;
@@ -135,10 +142,6 @@
     font-weight: bold;
     font-size: 0.9rem;
     transition: background 0.3s;
-  }
-
-  .accueil-buttons button:nth-child(1),
-  .accueil-buttons button:nth-child(2) {
     background:#ff6600;
     color:white;
   }
@@ -147,7 +150,6 @@
     background:#333;
   }
 
-  /* Slider */
   .slider {
     width: 100%;
     max-width: 1000px;
@@ -197,27 +199,26 @@
     background-color: rgba(0,0,0,0.8);
   }
 
-  /* Cartes sous le slider */
   .accueil-cards {
     display: flex;
-  flex-direction: row;      /* cartes en ligne */
-  justify-content: center;  /* centrées horizontalement */
-  align-items: stretch;     /* même hauteur */
-  gap: 20px;                /* espace entre les cartes */
-  flex-wrap: wrap;          /* permet le retour à la ligne sur petits écrans */
-  width: 100%;
-  max-width: 1000px;        /* limite la largeur totale */
-  margin-top: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 20px;
   }
 
   .accueil-cards .card {
-    flex: 1;                  /* les cartes prennent la même largeur */
-  min-width: 250px;         /* largeur minimale pour éviter qu’elles soient trop petites */
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-  text-align: center;
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    text-align: center;
   }
 
   .accueil-cards .card h3 {
@@ -229,307 +230,234 @@
     font-size: 0.85rem;
   }
 
-  /* Autres sections */
-  section {
-    text-align: center;
-    padding: 120px 20px 80px;
-    min-height: 100vh;
-  }
-
-  #journal, #propos, #sport, #culture, #activite, #cours {
-    background:#F3F4F6;
-  }
-  
+  /* --- Sections cours --- */
   #cours {
-  text-align: center;
-  padding: 40px;
-  background-color: #f9f9f9;
-}
-
-#cours h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-}
-
-.cours-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
-}
-
-.cours-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  width: 300px;
-  padding: 15px;
-  transition: transform 0.3s ease;
-}
-
-.cours-card:hover {
-  transform: scale(1.03);
-}
-
-.cours-card h3 {
-  margin-bottom: 10px;
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* format 16:9 */
-  height: 0;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 10px;
-}
-
-
-	.menu-toggle {
-  display: none;
-  font-size: 1.8em;
-  cursor: pointer;
-}
-
-/* --- STYLE POUR MOBILE --- */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* Caché par défaut */
-    flex-direction: column;
-    width: 100%;
-    background-color: #333;
-    position: absolute;
-    top: 60px;
-    left: 0;
     text-align: center;
-    padding: 10px 0;
+    padding: 40px;
+    background-color: #f9f9f9;
   }
 
-  .nav-links.active {
-    display: flex; /* Afficher quand on clique */
+  #cours h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
   }
 
-  .menu-toggle {
-    display: block;
+  .cours-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
   }
-}
-  
+
+  .cours-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: 300px;
+    padding: 15px;
+    transition: transform 0.3s ease;
+  }
+
+  .cours-card:hover {
+    transform: scale(1.03);
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* --- Mobile --- */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      text-align: center;
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links li ul {
+      position: relative;
+      top: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .nav-links li:hover ul {
+      display: none;
+    }
+  }
 </style>
 </head>
 <body>
 
-  <!-- Barre de navigation -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li>
-        <a href="#propos">À propos ▼</a>
-        <ul>
-          <li><a href="#">Notre équipe</a></li>
-          <li><a href="#">Historique</a></li>
-          <li><a href="#">Objectifs</a></li>
-        </ul>
-      </li>
-	        <li>
-        <a href="#cours">Cours ▼</a>
-        <ul>
-          <li><a href="#">Notre équipe</a></li>
-          <li><a href="#">Historique</a></li>
-          <li><a href="#">Objectifs</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#journal">Journal ▼</a>
-        <ul>
-          <li><a href="#">Actualités</a></li>
-          <li><a href="#">Archives</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#activite">Activités ▼</a>
-        <ul>
-          <li><a href="#">Sportives</a></li>
-          <li><a href="#">Culturelles</a></li>
-          <li><a href="#">Voyages</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">MonSite</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li>
+      <a href="#propos">À propos ▼</a>
+      <ul>
+        <li><a href="#">Notre équipe</a></li>
+        <li><a href="#">Historique</a></li>
+        <li><a href="#">Objectifs</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#cours">Cours ▼</a>
+      <ul>
+        <li><a href="#">Yoga</a></li>
+        <li><a href="#">Cardio</a></li>
+        <li><a href="#">Musculation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#journal">Journal ▼</a>
+      <ul>
+        <li><a href="#">Actualités</a></li>
+        <li><a href="#">Archives</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#activite">Activités ▼</a>
+      <ul>
+        <li><a href="#">Sportives</a></li>
+        <li><a href="#">Culturelles</a></li>
+        <li><a href="#">Voyages</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
-  <!-- Section Accueil -->
-  <section id="accueil">
-    <div class="accueil-header">
-      
-      <div class="slider">
-        <div class="slides">
-         <!-- <img src="C:\Users\DELL\Desktop\ssite\images/fff.jpg" alt="Image 1">
-          <img src="C:\Users\DELL\Desktop\ssite\images/yyy.jpg" alt="Image 2">
-          <img src="C:\Users\DELL\Desktop\ssite\images/yyy.jpg" alt="Image 3"> -->
-		  <img src="image/fff.jpg" alt="Image 1">
-          <img src="image/yyy.jpg" alt="Image 2">
-          <img src="image/hhh.jpg" alt="Image 3">
-        </div>
-        <div class="nav">
-          <button id="prev">❮</button>
-          <button id="next">❯</button>
-        </div>
+<!-- Section Accueil -->
+<section id="accueil">
+  <div class="accueil-header">
+    <div class="slider">
+      <div class="slides">
+        <img src="image/fff.jpg" alt="Image 1">
+        <img src="image/yyy.jpg" alt="Image 2">
+        <img src="image/hhh.jpg" alt="Image 3">
       </div>
-	  <h1>Bienvenue à l'école Benramdani Sadia TADMAIT <br> <p>découvrez notre univers, nos activités et notre passion pour l'éducation.</p></h1>
-      
-      <div class="accueil-buttons">
-        <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
-        <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
-      </div>
-
-    </div>
-	 <!-- Cartes en colonne -->
-    <div class="accueil-cards">
-      <div class="card">
-        <h3>Nos valeurs</h3>
-        <p>Respect – Partage – Excellence</p>
-      </div>
-      <div class="card">
-        <h3>Notre mission</h3>
-        <p>Accompagner chaque élève vers la réussite.</p>
-      </div>
-      <div class="card">
-        <h3>Événements récents</h3>
-        <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+      <div class="nav">
+        <button id="prev">❮</button>
+        <button id="next">❯</button>
       </div>
     </div>
-  </section>
-
-  <!-- Autres sections -->
-  <section id="journal"><h1>Journal de l'école</h1></section>
-  <section id="propos"><h1>À propos</h1></section>
-  <section id="cours">
-     
-          <h2>الدّروس</h2>
-  <div class="cours-container">
-    <div class="cours-card">
-      <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs?si=lxFKjuNR4kfdUgYB" 
-                title="Cours de Yoga" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-    </div>
-
-    <div class="cours-card">
-      <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs?si=lxFKjuNR4kfdUgYB" 
-                title="Cours de Yoga" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-    </div>
-
-    <div class="cours-card">
-      <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs?si=lxFKjuNR4kfdUgYB" 
-                title="Cours de Yoga" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
+    <h1>Bienvenue à l'école Benramdani Sadia TADMAIT</h1>
+    <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
+    <div class="accueil-buttons">
+      <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
+      <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
     </div>
   </div>
- 
-  </section>
-  <section id="activite"><h1>Activités scolaires</h1></section>
-  <section id="culture"><h1>Culture</h1></section>
-  <section id="sport"><h1>Sport</h1></section>
 
-  <!-- Script du slider -->
-  <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const total = images.length;
-    let index = 0;
+  <div class="accueil-cards">
+    <div class="card">
+      <h3>Nos valeurs</h3>
+      <p>Respect – Partage – Excellence</p>
+    </div>
+    <div class="card">
+      <h3>Notre mission</h3>
+      <p>Accompagner chaque élève vers la réussite.</p>
+    </div>
+    <div class="card">
+      <h3>Événements récents</h3>
+      <p>Voyages, fêtes et activités scolaires à ne pas manquer.</p>
+    </div>
+  </div>
+</section>
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
+<!-- Section Cours -->
+<section id="cours">
+  <h2>الدّروس</h2>
+  <div class="cours-container">
+    <div class="cours-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Yoga" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="cours-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Cardio" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="cours-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/4r8_NI6GAzs" title="Cours de Musculation" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % total;
-      updateSlide();
-    });
+<!-- Autres sections -->
+<section id="activite"><h1>Activités scolaires</h1></section>
+<section id="culture"><h1>Culture</h1></section>
+<section id="sport"><h1>Sport</h1></section>
 
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + total) % total;
-      updateSlide();
-    });
-
-    setInterval(() => {
-      index = (index + 1) % total;
-      updateSlide();
-    }, 5000);
-  </script>
-
-  </section>
-
-  <!-- Autres sections -->
-  <section id="journal">
-    <h1>Journal de l'école</h1>
-    <p>Voici la section du journal de l'école.</p>
-  </section>
-
-  <section id="propos">
-    <h1>À propos</h1>
-    <p>Voici la section à propos de nous.</p>
-  </section>
-
-  <section id="activite">
-    <h1>Activités scolaires</h1>
-    <p>Ceci est la section activités scolaires.</p>
-	
-	<div class="accueil-buttons">
-        <button onclick="document.getElementById('accueil').scrollIntoView({behavior:'smooth'})">Accueil</button>
-        <button onclick="document.getElementById('culture').scrollIntoView({behavior:'smooth'})">Activités culturelles</button>
-        <button onclick="document.getElementById('sport').scrollIntoView({behavior:'smooth'})">activités sportives</button>
-	  </div>
-	
-  </section>
-  <section id="culture"> ceci est la section culturelle</div>
-   <section id="sport"> ceci  est la section sport</div>
-  <!-- Script du slider -->
-  <script>
-    const slides = document.querySelector('.slides');
-    const images = document.querySelectorAll('.slides img');
-    const total = images.length;
-    let index = 0;
-
-    function updateSlide() {
-      slides.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    document.getElementById('next').addEventListener('click', () => {
-      index = (index + 1) % total; // passe à l’image suivante
-      updateSlide();
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      index = (index - 1 + total) % total; // revient à l’image précédente
-      updateSlide();
-    });
-
-    // Optionnel : défilement automatique toutes les 5 secondes
-    setInterval(() => {
-      index = (index + 1) % total;
-      updateSlide();
-    }, 5000);
-  </script>
+<!-- Slider JS -->
 <script>
+const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slides img');
+const total = images.length;
+let index = 0;
+
+function updateSlide() {
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}
+
+document.getElementById('next').addEventListener('click', () => {
+  index = (index + 1) % total;
+  updateSlide();
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+  index = (index - 1 + total) % total;
+  updateSlide();
+});
+
+setInterval(() => {
+  index = (index + 1) % total;
+  updateSlide();
+}, 5000);
+
+// Menu burger
 function toggleMenu() {
   const nav = document.querySelector('.nav-links');
   nav.classList.toggle('active');
 }
 </script>
-
-
+</body>
+</html>
