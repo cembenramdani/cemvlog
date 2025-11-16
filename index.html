@@ -27,7 +27,11 @@
   }
 
   .navbar .logo { color:white; font-size:1.5em; font-weight:bold;}
-  .navbar .logo img {  height: 100px;      /* ajuste la taille du logo */   width: auto;       /* garde les proportions */ }
+  .navbar .logo img {  height: 100px;      /* ajuste la taille du logo */   width: auto;       /* garde les proportions */ 
+                    .navbar img {
+    height: 60px;      /* ajuste la hauteur selon ton design */
+    width: auto;       /* garde les proportions */
+}
   .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0;}
   .nav-links li { position:relative;}
   .nav-links li a { color:white; text-decoration:none; font-weight:bold; font-size:16px; padding:10px 15px; display:block; transition: color 0.3s;}
@@ -250,6 +254,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 </script>
 </body>
 </html>
+
 
 
 
