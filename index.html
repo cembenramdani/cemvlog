@@ -300,16 +300,17 @@
 <section id="activite">
   <h1>Activités scolaires</h1>
   <p>Ceci est la section activités scolaires.</p>
+<!-- Disqus Comments -->
 <div id="disqus_thread"></div>
 <script>
 var disqus_config = function () {
-  this.page.url = window.location.href;
-  this.page.identifier = window.location.pathname;
+  this.page.url = window.location.href;        // URL actuelle de la page
+  this.page.identifier = window.location.pathname; // identifiant unique de la page
 };
 
 (function() { 
   var d = document, s = d.createElement('script');
-  s.src = 'https://cembenramdani-github-io-cemvlog.disqus.com/embed.js';
+  s.src = 'https://cembenramdani-github-io-cemvlog.disqus.com/embed.js';  // ton shortname ici
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
 })();
@@ -394,6 +395,7 @@ document.getElementById("searchInput").addEventListener("keyup", function() {
 
 </body>
 </html>
+
 
 
 
