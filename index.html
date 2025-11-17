@@ -301,20 +301,36 @@
   <h1>Activités scolaires</h1>
   <p>Ceci est la section activités scolaires.</p>
 <!-- Disqus Comments -->
-<div id="disqus_thread"></div>
+<div id="disqus_thread" style="min-height:300px;"></div>
+
 <script>
 var disqus_config = function () {
-  this.page.url = window.location.href;        // URL actuelle de la page
-  this.page.identifier = window.location.pathname; // identifiant unique de la page
+    this.page.url = window.location.href;
+    this.page.identifier = window.location.pathname;
 };
 
-(function() { 
-  var d = document, s = d.createElement('script');
-  s.src = 'https://cembenramdani-github-io-cemvlog.disqus.com/embed.js';  // ton shortname ici
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-})();
+// Fonction pour charger Disqus seulement quand l'utilisateur voit le bloc
+function loadDisqus() {
+    if (window.disqusLoaded) return; // éviter double chargement
+    window.disqusLoaded = true;
+
+    var d = document, s = d.createElement('script');
+    s.src = 'https://https-cembenramdani-github-io-cemvlog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+}
+
+// Observer pour charger Disqus quand le bloc apparaît
+var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+        loadDisqus();
+        observer.disconnect();
+    }
+}, {threshold: 0.1});
+
+observer.observe(document.getElementById('disqus_thread'));
 </script>
+
 <noscript>
   Please enable JavaScript to view the 
   <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
@@ -395,6 +411,7 @@ document.getElementById("searchInput").addEventListener("keyup", function() {
 
 </body>
 </html>
+
 
 
 
