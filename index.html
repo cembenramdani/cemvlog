@@ -28,7 +28,9 @@
     z-index: 1000;
   }
 
-  .navbar .logo { color:white; font-size:1.5em; font-weight:bold;}                 
+.navbar .logo {  color: white;  font-size: 15px;   /* ← taille réduite */  font-weight: bold;  line-height: 1.1;  /* ↓ espace vertical */
+  padding: 5px 10px; /* ↓ espace autour */
+}                 
   .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0;}
   .nav-links li { position:relative;}
   .nav-links li a { color:white; text-decoration:none; font-weight:bold; font-size:16px; padding:10px 15px; display:block; transition: color 0.3s;}
@@ -121,11 +123,7 @@
   }
 }
 
-    .logo {
-  font-size: 15px;
-  line-height: 1.1;
-  padding: 5px 10px;
-}
+   
   
 </style>
 </head>
@@ -143,7 +141,7 @@
     <li><a href="#accueil">Accueil</a></li>
     <li><a href="#propos">L'ecole </a></li>
     <li><a href="#activite">Activités Scolaires</a></li>
-     <li><a href="#contacter">contactez-nous</a></li>
+     <li><a href="#contacter">contacte</a></li>
   </ul>
 </nav>
 
@@ -271,6 +269,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
