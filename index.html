@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Site avec slider et menu déroulant</title>
+<title>My School</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js"></script>
   <style>
@@ -63,86 +63,7 @@
   .accueil-cards .card h3 { margin-bottom:6px; font-size:1rem;}
   .accueil-cards .card p { font-size:0.85rem;}
 
-  /* Cours */
-  #cours { background:#f9f9f9; padding:60px 20px;}
-  .cours-container { display:flex; flex-wrap:wrap; justify-content:center; gap:25px;}
-  .cours-card { background:white; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:300px; padding:15px; transition:transform 0.3s ease;}
-  .cours-card:hover { transform:scale(1.03);}
-  .video-wrapper { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px;}
-  .video-wrapper iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:10px;}
-
-  /* ---- Section Cours ---- */
-#cours {
-  background:#f9f9f9;
-  padding:60px 20px;
-  text-align:center;
-}
-
-.cours-search {
-  margin-bottom:20px;
-}
-
-.cours-search input {
-  width:260px;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:16px;
-  text-align:center;
-}
-
-/* Grille */
-.cours-grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:25px;
-  justify-content:center;
-}
-
-.cours-item {
-  background:white;
-  border-radius:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  padding:15px;
-  text-align:center;
-  transition:transform 0.3s;
-}
-
-.cours-item:hover {
-  transform:scale(1.04);
-}
-
-.cours-thumb {
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:12px;
-}
-
-.cours-item h3 {
-  margin:10px 0;
-  font-size:1.1rem;
-}
-
-.cours-item button {
-  padding:8px 15px;
-  background:#ff6600;
-  border:none;
-  border-radius:8px;
-  color:white;
-  font-size:0.9rem;
-  cursor:pointer;
-}
-
-.cours-item button:hover {
-  background:#333;
-}
-
-/* ---- Popup vidéo ---- */
-.modal {  display:none;  position:fixed;  top:0; left:0;  width:100%; height:100%;  background:rgba(0,0,0,0.7);  justify-content:center;  align-items:center;  z-index:2000;}
-.modal-content {  background:white;  padding:0;  border-radius:10px;  width:80%;  max-width:700px;  position:relative;}
-.modal-content iframe {  width:100%;  height:400px;  border:none;  border-radius:10px;}
-.close {   position:absolute;  top:10px;  right:15px;  font-size:28px;  cursor:pointer;}
+  
 
   /* Mobile */
  @media(max-width:768px){
@@ -216,16 +137,9 @@
 </div>
   <ul class="nav-links">
     <li><a href="#accueil">Accueil</a></li>
-    <li><a href="#propos">À propos</a></li>
-    <li><a href="#cours">Cours</a></li>
-    <li><a href="#journal">Journal</a></li>
-    <li>
-      <a href="#activite">Activités ▼</a>
-      <ul>
-        <li><a href="#sport">Sportives</a></li>
-        <li><a href="#culture">Culturelles</a></li>
-      </ul>
-    </li>
+    <li><a href="#propos">L'ecole </a></li>
+    <li><a href="#activite">Activités Scolaires</a></li>
+     <li><a href="#contacter">contactez-nous</a></li>
   </ul>
 </nav>
 
@@ -256,51 +170,8 @@
   </div>
 </section>
 
-<section id="cours">
-  <h2>الدّروس</h2>
-
-  <div class="cours-search">
-      <input type="text" id="searchInput" placeholder="ابحث عن درس...">
-  </div>
-
-  <div class="cours-grid">
-
-    <!-- CARD 1 -->
-    <div class="cours-item" data-title="الدرس الأول">
-      <img src="https://img.youtube.com/vi/4r8_NI6GAzs/maxresdefault.jpg" class="cours-thumb" alt="">
-      <h3>الدرس الأول</h3>
-      <button onclick="openVideo('https://https://www.youtube.com/embed/4r8_NI6GAzs')">مشاهدة الدرس</button>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="cours-item" data-title="الدرس الثاني">
-      <img src="image/mini2.jpg" class="cours-thumb" alt="">
-      <h3>الدرس الثاني</h3>
-      <button onclick="openVideo('https://www.youtube.com/embed/4r8_NI6GAzs')">مشاهدة الدرس</button>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="cours-item" data-title="رياضيات">
-      <img src="https://img.youtube.com/vi/Vgn77tTqEKc/maxresdefault.jpg" class="cours-thumb" alt="">
-      <h3>رياضيات</h3>
-      <button onclick="openVideo('https://youtu.be/Vgn77tTqEKc?si=9fec_quE6yrfoJDh')">مشاهدة الدرس</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- POPUP VIDEO -->
-<div id="videoModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeVideo()">&times;</span>
-    <iframe id="videoFrame" allowfullscreen></iframe>
-  </div>
-</div>
-
-<section id="activite">
-  <h1>Activités scolaires</h1>
-  <p>Ceci est la section activités scolaires.</p>
-<!-- Disqus Comments -->
+<section id="contacter">
+        <!-- Disqus Comments -->
 <div id="disqus_thread" style="min-height:300px;"></div>
 
 <script>
@@ -335,7 +206,13 @@ observer.observe(document.getElementById('disqus_thread'));
   Please enable JavaScript to view the 
   <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
 </noscript>
-  
+</section>
+
+
+
+<section id="activite">
+  <h1>Activités scolaires</h1>
+  <p>Ceci est la section activités scolaires.</p>
 </section>
 
 <section id="culture">
@@ -389,28 +266,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     nav.classList.remove('active');
   });
 });
-  function openVideo(url){
-  document.getElementById("videoFrame").src = url;
-  document.getElementById("videoModal").style.display = "flex";
-}
-
-function closeVideo(){
-  document.getElementById("videoFrame").src = "";
-  document.getElementById("videoModal").style.display = "none";
-}
-
-/* ---- Recherche dans les cours ---- */
-document.getElementById("searchInput").addEventListener("keyup", function() {
-  let value = this.value.toLowerCase();
-  document.querySelectorAll(".cours-item").forEach(item => {
-    let title = item.getAttribute("data-title").toLowerCase();
-    item.style.display = title.includes(value) ? "block" : "none";
-  });
-});
+ 
 </script>
 
 </body>
 </html>
+
 
 
 
