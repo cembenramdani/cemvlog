@@ -28,9 +28,15 @@
     z-index: 1000;
   }
 
-.navbar .logo {  color: white;  font-size: 15px;   /* ← taille réduite */  font-weight: bold;  line-height: 1.1;  /* ↓ espace vertical */
-  padding: 5px 10px; /* ↓ espace autour */
-}                 
+    .navbar .logo {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 1.1;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
   .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0;}
   .nav-links li { position:relative;}
   .nav-links li a { color:white; text-decoration:none; font-weight:bold; font-size:16px; padding:10px 15px; display:block; transition: color 0.3s;}
@@ -269,6 +275,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
