@@ -171,36 +171,7 @@
 </section>
 
 <section id="contacter">
-        <!-- Disqus Comments -->
-<div id="disqus_thread" style="min-height:300px;"></div>
-
-<script>
-var disqus_config = function () {
-    this.page.url = window.location.href;
-    this.page.identifier = window.location.pathname;
-};
-
-// Fonction pour charger Disqus seulement quand l'utilisateur voit le bloc
-function loadDisqus() {
-    if (window.disqusLoaded) return; // éviter double chargement
-    window.disqusLoaded = true;
-
-    var d = document, s = d.createElement('script');
-    s.src = 'https://https-cembenramdani-github-io-cemvlog.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-}
-
-// Observer pour charger Disqus quand le bloc apparaît
-var observer = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting) {
-        loadDisqus();
-        observer.disconnect();
-    }
-}, {threshold: 0.1});
-
-observer.observe(document.getElementById('disqus_thread'));
-</script>
+       
 
 </section>
 
@@ -267,6 +238,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
