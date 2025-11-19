@@ -220,63 +220,7 @@ button[type="submit"]:hover {
   border-radius: 15px;
 }
 
-    /* --- Menu vertical --- */
-.vertical-menu {
-  width: 250px;
-  background-color: #2c3e50;
-  border-radius: 10px;
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.vertical-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.vertical-menu ul li {
-  position: relative;
-}
-
-.vertical-menu a {
-  display: block;
-  padding: 12px 20px;
-  color: #ecf0f1;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s, color 0.3s;
-}
-
-.vertical-menu a:hover {
-  background-color: #34495e;
-  color: #ffcc00;
-}
-
-.submenu {
-  display: none;
-  background-color: #34495e;
-}
-
-.submenu li a {
-  padding-left: 40px;
-  font-weight: normal;
-}
-
-.vertical-menu li:hover > .submenu {
-  display: block;
-}
-
-/* --- Responsive --- */
-@media(max-width: 768px){
-  .vertical-menu {
-    width: 100%;
-  }
-}
-
-
-</style>
+  </style>
 </head>
 <body>
 
@@ -323,28 +267,99 @@ button[type="submit"]:hover {
   </div>
 </section>
 
-<section id="activite">
-  <h1>Activités scolaires</h1>
-  <p>Ceci est la section activités scolaires.</p>
-<!-- Menu vertical -->
-<nav class="vertical-menu">
-  <ul>
-    <li><a href="#sport">Activités sportives</a></li>
-    <li><a href="#journal">Journal mural</a></li>
-    <li><a href="#fetes">Fêtes culturelles</a></li>
-    <li>
-      <a href="#">Clubs ▾</a>
-      <ul class="submenu">
-        <li><a href="#club-scientifique">Club scientifique</a></li>
-        <li><a href="#club-informatique">Club informatique</a></li>
-        <li><a href="#club-culturel">Club culturel</a></li>
-        <li><a href="#club-lecture">Club lecture</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<section id="activites" style="display:flex; max-width:1200px; margin:50px auto; gap:30px;">
   
+  <!-- Menu vertical à gauche -->
+  <nav class="vertical-menu" style="flex:0 0 250px; background:#2563EB; border-radius:15px; padding:20px; color:white;">
+    <h3 style="color:white; margin-bottom:20px;">Activités</h3>
+    <ul style="list-style:none; padding:0;">
+      <li><a href="#" class="menu-link" data-target="sport" style="color:white; text-decoration:none; display:block; padding:10px 0;">Sport</a></li>
+      <li><a href="#" class="menu-link" data-target="culture" style="color:white; text-decoration:none; display:block; padding:10px 0;">Culture</a></li>
+      <li><a href="#" class="menu-link" data-target="journal" style="color:white; text-decoration:none; display:block; padding:10px 0;">Journal mural</a></li>
+      <li>
+        <span style="font-weight:bold;">Clubs</span>
+        <ul style="list-style:none; padding-left:15px; margin-top:5px;">
+          <li><a href="#" class="menu-link" data-target="club-scientifique" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club scientifique</a></li>
+          <li><a href="#" class="menu-link" data-target="club-informatique" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club informatique</a></li>
+          <li><a href="#" class="menu-link" data-target="club-lecture" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club lecture</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contenu à droite -->
+  <div class="content-area" style="flex:1; background:#f9f9f9; border-radius:15px; padding:20px; min-height:400px;">
+    
+    <div class="content" id="sport" style="display:none;">
+      <h2>Sport</h2>
+      <ul>
+        <li>Tournois internes et inter-classes.</li>
+        <li>Compétitions communales et daira.</li>
+        <li>Journée sportive annuelle.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="culture" style="display:none;">
+      <h2>Culture</h2>
+      <ul>
+        <li>Fête traditionnelle amazigh.</li>
+        <li>Exposition artistique des élèves.</li>
+        <li>Concert scolaire.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="journal" style="display:none;">
+      <h2>Journal mural</h2>
+      <ul>
+        <li>Résultats des tournois.</li>
+        <li>Projets artistiques des élèves.</li>
+        <li>Prochaines activités scolaires.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="club-scientifique" style="display:none;">
+      <h2>Club scientifique</h2>
+      <ul>
+        <li>Expériences et projets scientifiques.</li>
+        <li>Participation aux concours régionaux.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="club-informatique" style="display:none;">
+      <h2>Club informatique</h2>
+      <ul>
+        <li>Programmation et robotique.</li>
+        <li>Jeux éducatifs et compétitions de coding.</li>
+      </ul>
+    </div>
+
+    <div class="content" id="club-lecture" style="display:none;">
+      <h2>Club lecture</h2>
+      <ul>
+        <li>Critiques de livres et discussions.</li>
+        <li>Bibliothèque scolaire et activités lecture.</li>
+      </ul>
+    </div>
+
+  </div>
 </section>
+
+<script>
+// JavaScript pour afficher dynamiquement le contenu
+const links = document.querySelectorAll('.menu-link');
+const contents = document.querySelectorAll('.content');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.dataset.target;
+    
+    contents.forEach(c => c.style.display = 'none'); // cache tout
+    document.getElementById(target).style.display = 'block'; // affiche le contenu sélectionné
+  });
+});
+</script>
+
 
 <section id="propos">
   <h1>À propos</h1>
@@ -439,6 +454,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
