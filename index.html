@@ -62,8 +62,8 @@
   .accueil-cards .card { flex:1; min-width:250px; background:white; padding:15px; border-radius:8px; box-shadow:0 3px 8px rgba(0,0,0,0.15); text-align:center;}
   .accueil-cards .card h3 { margin-bottom:6px; font-size:1rem;}
   .accueil-cards .card p { font-size:0.85rem;}
-   #contacter {   padding: 20px 20px 60px;}
-  #activite {   padding: 20px 20px 60px;}
+   #contacter {   padding: 10px 20px 60px;}
+  #activite {   padding: 10px 20px 60px;}
 
   /* Mobile */
  @media(max-width:768px){
@@ -323,6 +323,33 @@ button[type="submit"]:hover {
   </div>
 </section>
 
+<section id="activite">
+  <h1>Activités scolaires</h1>
+  <p>Ceci est la section activités scolaires.</p>
+<!-- Menu vertical -->
+<nav class="vertical-menu">
+  <ul>
+    <li><a href="#sport">Activités sportives</a></li>
+    <li><a href="#journal">Journal mural</a></li>
+    <li><a href="#fetes">Fêtes culturelles</a></li>
+    <li>
+      <a href="#">Clubs ▾</a>
+      <ul class="submenu">
+        <li><a href="#club-scientifique">Club scientifique</a></li>
+        <li><a href="#club-informatique">Club informatique</a></li>
+        <li><a href="#club-culturel">Club culturel</a></li>
+        <li><a href="#club-lecture">Club lecture</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  
+</section>
+
+<section id="propos">
+  <h1>À propos</h1>
+  <p>Ceci est la section à propos de nous.</p>
+</section>
 <section id="contacter">
   <h2>Contactez-nous</h2>
   <p>Pour toute question, suggestion ou demande d’information, écrivez-nous via le formulaire ci-dessous.</p>
@@ -371,49 +398,6 @@ button[type="submit"]:hover {
 
   </div>
 </section>
-
-
-
-
-
-<section id="activite">
-  <h1>Activités scolaires</h1>
-  <p>Ceci est la section activités scolaires.</p>
-<!-- Menu vertical -->
-<nav class="vertical-menu">
-  <ul>
-    <li><a href="#sport">Activités sportives</a></li>
-    <li><a href="#journal">Journal mural</a></li>
-    <li><a href="#fetes">Fêtes culturelles</a></li>
-    <li>
-      <a href="#">Clubs ▾</a>
-      <ul class="submenu">
-        <li><a href="#club-scientifique">Club scientifique</a></li>
-        <li><a href="#club-informatique">Club informatique</a></li>
-        <li><a href="#club-culturel">Club culturel</a></li>
-        <li><a href="#club-lecture">Club lecture</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-  
-</section>
-
-<section id="culture">
-  <h1>Culture</h1>
-  <p>Ceci est la section culturelle.</p>
-</section>
-
-<section id="sport">
-  <h1>Sport</h1>
-  <p>Ceci est la section sport.</p>
-</section>
-
-<section id="propos">
-  <h1>À propos</h1>
-  <p>Ceci est la section à propos de nous.</p>
-</section>
-
   <script>
 const slides = document.querySelector('.slides');
 const images = document.querySelectorAll('.slides img');
@@ -455,6 +439,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
