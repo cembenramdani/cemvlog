@@ -219,7 +219,27 @@ button[type="submit"]:hover {
   box-sizing: border-box;
   border-radius: 15px;
 }
+/*  gelerie photo */
+    .journal-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
 
+.journal-photos img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.journal-photos img:hover {
+  transform: scale(1.05); /* léger zoom */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ombre douce */
+}
   </style>
 </head>
 <body>
@@ -255,11 +275,7 @@ button[type="submit"]:hover {
     </div>
     <h1>Bienvenue à l'école Benramdani Sadia TADMAIT</h1>
     <p>Découvrez notre univers, nos activités et notre passion pour l'éducation.</p>
-    <!--  <div class="accueil-buttons">
-      <button onclick="document.getElementById('activite').scrollIntoView({behavior:'smooth'})">Découvrir les activités</button>
-      <button onclick="document.getElementById('journal').scrollIntoView({behavior:'smooth'})">Voir le journal</button>
-    </div> ! -->
-  </div>
+    </div>
   <div class="accueil-cards">
     <div class="card"><h3>Nos valeurs</h3><p>Respect – Partage – Excellence</p></div>
     <div class="card"><h3>Notre mission</h3><p>Accompagner chaque élève vers la réussite.</p></div>
@@ -352,13 +368,12 @@ button[type="submit"]:hover {
       <h2>Journal mural</h2>
       <ul>
         <li>Résultats des tournois.
-        <div class="journal-photos" style="
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap:15px;
-      margin-top:15px;">
-    <img src="image/1.png" alt="Journal 1" style="width:100%; border-radius:10px; object-fit:cover; height:150px;">
-    <img src="image/2.png" alt="Journal 2" style="width:100%; border-radius:10px; object-fit:cover; height:150px;">
+            <!-- Galerie de photos -->
+        
+   
+  <div class="journal-photos">
+    <img src="image/1.png" alt="Journal 1">
+    <img src="image/2.png" alt="Journal 2">
   </div>
         </li>
         <li>Projets artistiques des élèves.</li>
@@ -524,6 +539,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
