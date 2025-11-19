@@ -553,10 +553,42 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   });
 });
  
-</script>
 
+
+  /* pour le menu vertical mobile defilement*/
+  // Scroll fluide pour menu vertical Activité (mobile & desktop)
+const verticalLinks = document.querySelectorAll('.vertical-menu .menu-link');
+
+verticalLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault(); // empêche le comportement par défaut
+    const targetId = link.dataset.target;
+    const targetSection = document.getElementById(targetId);
+
+    // Scroll fluide vers la section
+    const navHeight = document.querySelector('.navbar').offsetHeight;
+    const verticalMenuHeight = 0; // si besoin d'ajuster pour menu vertical
+    window.scrollTo({
+      top: targetSection.offsetTop - navHeight - verticalMenuHeight,
+      behavior: 'smooth'
+    });
+
+    // Si menu mobile, cache le menu vertical pour laisser voir le contenu
+    if(window.innerWidth <= 768){
+      // tu peux ajouter une classe "active" pour toggle si tu veux
+      const menu = document.querySelector('.vertical-menu ul');
+      menu.style.display = 'none';
+    }
+
+    // Affiche le contenu associé
+    document.querySelectorAll('.content').forEach(c => c.style.display = 'none');
+    targetSection.style.display = 'block';
+  });
+});
+    </script>
 </body>
 </html>
+
 
 
 
