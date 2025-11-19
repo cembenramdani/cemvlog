@@ -220,7 +220,7 @@ button[type="submit"]:hover {
   border-radius: 15px;
 }
 /*  gelerie photo */
-    .journal-photos {
+  .journal-photos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 15px;
@@ -237,8 +237,8 @@ button[type="submit"]:hover {
 }
 
 .journal-photos img:hover {
-  transform: scale(1.05); /* léger zoom */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* ombre douce */
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
   </style>
 </head>
@@ -372,9 +372,13 @@ button[type="submit"]:hover {
         
    
   <div class="journal-photos">
+  <a href="image/1.png" target="_blank">
     <img src="image/1.png" alt="Journal 1">
+  </a>
+  <a href="image/2.png" target="_blank">
     <img src="image/2.png" alt="Journal 2">
-  </div>
+  </a>
+</div>
         </li>
         <li>Projets artistiques des élèves.</li>
         <li>Prochaines activités scolaires.</li>
@@ -539,6 +543,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
