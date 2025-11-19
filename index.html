@@ -270,26 +270,66 @@ button[type="submit"]:hover {
 <section id="activites" style="display:flex; max-width:1200px; margin:50px auto; gap:30px;">
   
   <!-- Menu vertical à gauche -->
-  <nav class="vertical-menu" style="flex:0 0 250px; background:#2563EB; border-radius:15px; padding:20px; color:white;">
-    <h3 style="color:white; margin-bottom:20px;">Activités</h3>
-    <ul style="list-style:none; padding:0;">
-      <li><a href="#" class="menu-link" data-target="sport" style="color:white; text-decoration:none; display:block; padding:10px 0;">Sport</a></li>
-      <li><a href="#" class="menu-link" data-target="culture" style="color:white; text-decoration:none; display:block; padding:10px 0;">Culture</a></li>
-      <li><a href="#" class="menu-link" data-target="journal" style="color:white; text-decoration:none; display:block; padding:10px 0;">Journal mural</a></li>
+  <nav class="vertical-menu" style="
+    flex:0 0 220px;
+    background: linear-gradient(to bottom, #1E3A8A, #2563EB);
+    border-radius:15px;
+    padding:20px;
+    color:white;
+    font-family: Arial, sans-serif;
+  ">
+    <h3 style="color:white; margin-bottom:20px; text-align:center;">Activités</h3>
+    <ul style="list-style:none; padding:0; margin:0;">
       <li>
-        <span style="font-weight:bold;">Clubs</span>
-        <ul style="list-style:none; padding-left:15px; margin-top:5px;">
-          <li><a href="#" class="menu-link" data-target="club-scientifique" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club scientifique</a></li>
-          <li><a href="#" class="menu-link" data-target="club-informatique" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club informatique</a></li>
-          <li><a href="#" class="menu-link" data-target="club-lecture" style="color:white; text-decoration:none; display:block; padding:5px 0;">Club lecture</a></li>
+        <a href="#" class="menu-link" data-target="sport" style="
+          color:white; text-decoration:none; display:block; padding:12px 15px; 
+          border-radius:8px; transition: background 0.3s;
+        ">Sport</a>
+      </li>
+      <li>
+        <a href="#" class="menu-link" data-target="culture" style="
+          color:white; text-decoration:none; display:block; padding:12px 15px; 
+          border-radius:8px; transition: background 0.3s;
+        ">Culture</a>
+      </li>
+      <li>
+        <a href="#" class="menu-link" data-target="journal" style="
+          color:white; text-decoration:none; display:block; padding:12px 15px; 
+          border-radius:8px; transition: background 0.3s;
+        ">Journal mural</a>
+      </li>
+      <li style="margin-top:15px;">
+        <span style="font-weight:bold; display:block; margin-bottom:5px;">Clubs</span>
+        <ul style="list-style:none; padding-left:15px; margin:0;">
+          <li>
+            <a href="#" class="menu-link" data-target="club-scientifique" style="
+              color:white; text-decoration:none; display:block; padding:8px 10px; 
+              border-radius:6px; transition: background 0.3s;
+            ">Club scientifique</a>
+          </li>
+          <li>
+            <a href="#" class="menu-link" data-target="club-informatique" style="
+              color:white; text-decoration:none; display:block; padding:8px 10px; 
+              border-radius:6px; transition: background 0.3s;
+            ">Club informatique</a>
+          </li>
+          <li>
+            <a href="#" class="menu-link" data-target="club-lecture" style="
+              color:white; text-decoration:none; display:block; padding:8px 10px; 
+              border-radius:6px; transition: background 0.3s;
+            ">Club lecture</a>
+          </li>
         </ul>
       </li>
     </ul>
   </nav>
 
   <!-- Contenu à droite -->
-  <div class="content-area" style="flex:1; background:#f9f9f9; border-radius:15px; padding:20px; min-height:400px;">
-    
+  <div class="content-area" style="
+    flex:1; background:#f9f9f9; border-radius:15px; padding:20px; min-height:400px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  ">
+    <!-- Sections (identiques à l'exemple précédent) -->
     <div class="content" id="sport" style="display:none;">
       <h2>Sport</h2>
       <ul>
@@ -340,9 +380,30 @@ button[type="submit"]:hover {
         <li>Bibliothèque scolaire et activités lecture.</li>
       </ul>
     </div>
-
   </div>
 </section>
+
+<script>
+const links = document.querySelectorAll('.menu-link');
+const contents = document.querySelectorAll('.content');
+
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = link.dataset.target;
+    
+    contents.forEach(c => c.style.display = 'none');
+    document.getElementById(target).style.display = 'block';
+  });
+});
+
+// Ajouter un hover effect pour tous les liens
+links.forEach(link => {
+  link.addEventListener('mouseenter', () => { link.style.background='rgba(255,255,255,0.2)'; });
+  link.addEventListener('mouseleave', () => { link.style.background='transparent'; });
+});
+</script>
+
 
 <script>
 // JavaScript pour afficher dynamiquement le contenu
@@ -454,6 +515,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
