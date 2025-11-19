@@ -351,7 +351,16 @@ button[type="submit"]:hover {
     <div class="content" id="journal" style="display:none;">
       <h2>Journal mural</h2>
       <ul>
-        <li>Résultats des tournois.</li>
+        <li>Résultats des tournois.
+        <div class="journal-photos" style="
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap:15px;
+      margin-top:15px;">
+    <img src="image/1.jpg" alt="Journal 1" style="width:100%; border-radius:10px; object-fit:cover; height:150px;">
+    <img src="image/2.jpg" alt="Journal 2" style="width:100%; border-radius:10px; object-fit:cover; height:150px;">
+  </div>
+        </li>
         <li>Projets artistiques des élèves.</li>
         <li>Prochaines activités scolaires.</li>
       </ul>
@@ -515,6 +524,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 
 </body>
 </html>
+
 
 
 
